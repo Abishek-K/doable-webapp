@@ -1,13 +1,19 @@
 import { NextResponse } from 'next/server';
-import { adminAuth, firestore } from '../../../../firebase/admin';
+import { getAdminAuth, getAdminDb } from '@/firebase/admin';
 import Stripe from 'stripe';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2024-06-20',
 });
 
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
 export async function GET(req: Request) {
   try {
+    const adminAuth = getAdminAuth();
+    const firestore = getAdminDb();
+
     const idToken = req.headers.get('Authorization')?.split('Bearer ')[1];
     if (!idToken) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

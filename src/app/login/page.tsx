@@ -83,7 +83,7 @@ export default function LoginPage() {
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between py-8 space-y-4 sm:space-y-0">
           <div className="flex items-center space-x-4">
             <Flame className="h-6 w-6 text-[#FF6F61]" />
-            <span className="text-sm font-medium">© 2024 SaaSBoiler. All rights reserved.</span>
+            <span className="text-sm font-medium">Â© 2024 SaaSBoiler. All rights reserved.</span>
           </div>
           <nav className="flex items-center space-x-4">
             <Link href="#" className="text-sm font-medium hover:text-[#FF6F61] transition-colors">

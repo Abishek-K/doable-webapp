@@ -1,0 +1,275 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && request.auth.token.admin == true;
+    }
+
+    function isOwner(uid) {
+      return isSignedIn() && request.auth.uid == uid;
+    }
+
+    function isPublishedBook(bookId) {
+      return exists(/databases/$(database)/documents/books/$(bookId)) &&
+        get(/databases/$(database)/documents/books/$(bookId)).data.published == true;
+    }
+
+    function validUserDoc() {
+      return request.resource.data.keys().hasAll([
+          'name',
+          'email',
+          'role',
+          'plan',
+          'createdAt',
+          'updatedAt'
+        ]) &&
+        request.resource.data.keys().hasOnly([
+          'name',
+          'email',
+          'role',
+          'trial_end',
+          'plan',
+          'createdAt',
+          'updatedAt',
+          'avatarUrl',
+          'subscriptionStatus',
+          'subscriptionId',
+          'stripeCustomerId'
+        ]) &&
+        request.resource.data.name is string &&
+        request.resource.data.email is string &&
+        request.resource.data.role in ['user', 'admin'] &&
+        (request.resource.data.trial_end == null || request.resource.data.trial_end is timestamp) &&
+        request.resource.data.plan is string &&
+        request.resource.data.createdAt is timestamp &&
+        request.resource.data.updatedAt is timestamp &&
+        (!request.resource.data.keys().hasAny(['avatarUrl']) || request.resource.data.avatarUrl is string) &&
+        (!request.resource.data.keys().hasAny(['subscriptionStatus']) || request.resource.data.subscriptionStatus is string) &&
+        (!request.resource.data.keys().hasAny(['subscriptionId']) || request.resource.data.subscriptionId is string) &&
+        (!request.resource.data.keys().hasAny(['stripeCustomerId']) || request.resource.data.stripeCustomerId is string);
+    }
+
+    function validBookDoc() {
+      return request.resource.data.keys().hasAll([
+          'title',
+          'author',
+          'coverUrl',
+          'categories',
+          'readTime',
+          'published',
+          'seo',
+          'summaryCount',
+          'audioAvailable',
+          'createdAt',
+          'updatedAt'
+        ]) &&
+        request.resource.data.keys().hasOnly([
+          'title',
+          'author',
+          'coverUrl',
+          'categories',
+          'readTime',
+          'published',
+          'seo',
+          'summaryCount',
+          'audioAvailable',
+          'createdAt',
+          'updatedAt'
+        ]) &&
+        request.resource.data.title is string &&
+        request.resource.data.author is string &&
+        request.resource.data.coverUrl is string &&
+        request.resource.data.categories is list &&
+        request.resource.data.readTime is int &&
+        request.resource.data.readTime > 0 &&
+        request.resource.data.published is bool &&
+        request.resource.data.seo is map &&
+        request.resource.data.seo.keys().hasOnly(['slug']) &&
+        request.resource.data.seo.slug is string &&
+        request.resource.data.summaryCount is int &&
+        request.resource.data.summaryCount >= 0 &&
+        request.resource.data.audioAvailable is bool &&
+        request.resource.data.createdAt is timestamp &&
+        request.resource.data.updatedAt is timestamp;
+    }
+
+    function validSummaryDoc() {
+      return request.resource.data.keys().hasAll([
+          'title',
+          'order',
+          'contentMarkdown',
+          'highlights',
+          'readTime',
+          'createdAt',
+          'updatedAt'
+        ]) &&
+        request.resource.data.keys().hasOnly([
+          'title',
+          'order',
+          'contentMarkdown',
+          'audioUrl',
+          'highlights',
+          'readTime',
+          'createdAt',
+          'updatedAt'
+        ]) &&
+        request.resource.data.title is string &&
+        request.resource.data.order is int &&
+        request.resource.data.order >= 0 &&
+        request.resource.data.contentMarkdown is string &&
+        (!request.resource.data.keys().hasAny(['audioUrl']) || request.resource.data.audioUrl is string) &&
+        request.resource.data.highlights is list &&
+        request.resource.data.readTime is int &&
+        request.resource.data.readTime > 0 &&
+        request.resource.data.createdAt is timestamp &&
+        request.resource.data.updatedAt is timestamp;
+    }
+
+    function validBlogDoc() {
+      return request.resource.data.keys().hasAll([
+          'title',
+          'slug',
+          'contentMarkdown',
+          'coverUrl',
+          'published',
+          'createdAt',
+          'updatedAt'
+        ]) &&
+        request.resource.data.keys().hasOnly([
+          'title',
+          'slug',
+          'contentMarkdown',
+          'coverUrl',
+          'published',
+          'createdAt',
+          'updatedAt'
+        ]) &&
+        request.resource.data.title is string &&
+        request.resource.data.slug is string &&
+        request.resource.data.contentMarkdown is string &&
+        request.resource.data.coverUrl is string &&
+        request.resource.data.published is bool &&
+        request.resource.data.createdAt is timestamp &&
+        request.resource.data.updatedAt is timestamp;
+    }
+
+    function validPaymentDoc() {
+      return request.resource.data.keys().hasAll([
+          'userId',
+          'amount',
+          'currency',
+          'status',
+          'provider',
+          'createdAt'
+        ]) &&
+        request.resource.data.keys().hasOnly([
+          'userId',
+          'amount',
+          'currency',
+          'status',
+          'provider',
+          'createdAt',
+          'updatedAt',
+          'providerRef',
+          'metadata'
+        ]) &&
+        request.resource.data.userId is string &&
+        request.resource.data.amount is number &&
+        request.resource.data.amount >= 0 &&
+        request.resource.data.currency is string &&
+        request.resource.data.status is string &&
+        request.resource.data.provider is string &&
+        request.resource.data.createdAt is timestamp &&
+        (!request.resource.data.keys().hasAny(['updatedAt']) || request.resource.data.updatedAt is timestamp) &&
+        (!request.resource.data.keys().hasAny(['providerRef']) || request.resource.data.providerRef is string) &&
+        (!request.resource.data.keys().hasAny(['metadata']) || request.resource.data.metadata is map);
+    }
+
+    function validProgressDoc() {
+      return request.resource.data.keys().hasAll([
+          'progressPercent',
+          'lastSummaryId',
+          'playbackPosition',
+          'highlights',
+          'updatedAt'
+        ]) &&
+        request.resource.data.keys().hasOnly([
+          'progressPercent',
+          'lastSummaryId',
+          'playbackPosition',
+          'completedAt',
+          'highlights',
+          'updatedAt'
+        ]) &&
+        request.resource.data.progressPercent is number &&
+        request.resource.data.progressPercent >= 0 &&
+        request.resource.data.progressPercent <= 100 &&
+        request.resource.data.lastSummaryId is string &&
+        request.resource.data.playbackPosition is number &&
+        request.resource.data.playbackPosition >= 0 &&
+        request.resource.data.highlights is list &&
+        request.resource.data.updatedAt is timestamp &&
+        (!request.resource.data.keys().hasAny(['completedAt']) || request.resource.data.completedAt is timestamp);
+    }
+
+    function validBookmarkDoc() {
+      return request.resource.data.keys().hasAll(['bookId', 'createdAt']) &&
+        request.resource.data.keys().hasOnly(['bookId', 'createdAt']) &&
+        request.resource.data.bookId is string &&
+        exists(/databases/$(database)/documents/books/$(request.resource.data.bookId)) &&
+        request.resource.data.createdAt is timestamp;
+    }
+
+    match /users/{uid} {
+      allow read: if isOwner(uid);
+      allow create: if isOwner(uid) && validUserDoc() && request.resource.data.role == 'user';
+      allow update: if isOwner(uid) && validUserDoc() && request.resource.data.role == resource.data.role;
+      allow delete: if isOwner(uid);
+    }
+
+    match /books/{bookId} {
+      allow read: if resource.data.published == true || isAdmin();
+      allow create, update: if isAdmin() && validBookDoc();
+      allow delete: if isAdmin();
+
+      match /summaries/{summaryId} {
+        allow read: if isPublishedBook(bookId) || isAdmin();
+        allow create, update: if isAdmin() && validSummaryDoc();
+        allow delete: if isAdmin();
+      }
+    }
+
+    match /blogs/{blogId} {
+      allow read: if resource.data.published == true || isAdmin();
+      allow create, update: if isAdmin() && validBlogDoc();
+      allow delete: if isAdmin();
+    }
+
+    match /payments/{paymentId} {
+      allow read: if isSignedIn() && resource.data.userId == request.auth.uid;
+      allow create, update: if isAdmin() && validPaymentDoc();
+      allow delete: if isAdmin();
+    }
+
+    match /userProgress/{uid}/bookProgress/{bookId} {
+      allow read: if isOwner(uid);
+      allow create, update: if isOwner(uid) && validProgressDoc();
+      allow delete: if isOwner(uid);
+    }
+
+    match /bookmarks/{uid}/items/{bookmarkId} {
+      allow read: if isOwner(uid);
+      allow create, update: if isOwner(uid) && validBookmarkDoc();
+      allow delete: if isOwner(uid);
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

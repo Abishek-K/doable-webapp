@@ -1,8 +1,14 @@
 import { NextResponse } from 'next/server';
-import { adminAuth, firestore } from '../../../../firebase/admin';
+import { getAdminAuth, getAdminDb } from '@/firebase/admin';
+
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 export async function GET(req: Request) {
   try {
+    const adminAuth = getAdminAuth();
+    const firestore = getAdminDb();
+
     // Assuming the user is sending a valid Firebase ID token via headers
     const idToken = req.headers.get('Authorization')?.split('Bearer ')[1];
     if (!idToken) {
