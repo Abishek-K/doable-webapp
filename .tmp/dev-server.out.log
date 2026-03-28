@@ -1,0 +1,13 @@
+
+> saasbp@0.1.0 dev
+> next dev
+
+  ▲ Next.js 14.2.13
+  - Local:        http://localhost:3001
+  - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 4.2s
+   Reload env: .env.local
+   Reload env: .env.local
+   Reload env: .env.local
