@@ -122,7 +122,7 @@ Here's the problem: most morning routine advice is designed for people who alrea
 ### The Compound Effect
 
 A consistent 15-minute morning practice beats an inconsistent 90-minute one every time. After 30 days of your simple anchor habit, add a second element. After 60 days, add a third. Build your routine like you'd build a house — foundation first.`,
-    coverUrl: "/images/blog/deep-work.png",
+    coverUrl: "/images/blog/morning-routine.png",
     author: "Doable Team",
     category: "Mindset",
     tags: ["morning-routine", "habits", "productivity", "mindset"],
@@ -171,7 +171,7 @@ Most people avoid conflict. Good leaders resolve it. Great leaders *translate* i
 ### The Career Multiplier
 
 Technical skills get you hired. Invisible skills get you promoted. The best part? While everyone is busy collecting certifications and hard skills, these soft skills remain an uncrowded playing field. Start developing them now and you'll be the person everyone wants on their team — and in their leadership pipeline.`,
-    coverUrl: "/images/blog/deep-work.png",
+    coverUrl: "/images/blog/career-skills.png",
     author: "Doable Team",
     category: "Career Growth",
     tags: ["career", "leadership", "soft-skills", "promotion"],
@@ -231,7 +231,7 @@ This framework works for professional skills too:
 ### The Key Insight
 
 The biggest barrier to learning isn't time — it's emotional. We're afraid of looking foolish, of not being good enough. The 20-hour framework gives you permission to be terrible... for exactly 20 hours. After that, you'll be surprised at how far you've come.`,
-    coverUrl: "/images/blog/deep-work.png",
+    coverUrl: "/images/blog/learning-skills.png",
     author: "Doable Team",
     category: "Deep Learning",
     tags: ["learning", "skill-acquisition", "self-improvement", "josh-kaufman"],
@@ -313,7 +313,7 @@ Don't try to meditate "more." Instead, attach micro-meditations to existing trig
 A 2019 study in *Psychoneuroendocrinology* found that even brief mindfulness practices (1-5 minutes) performed consistently throughout the day produced stress-reduction benefits comparable to longer single sessions. The key isn't duration — it's frequency and consistency.
 
 Start with one micro-meditation today. The total investment is 60 seconds. The returns are immeasurable.`,
-    coverUrl: "/images/blog/deep-work.png",
+    coverUrl: "/images/blog/meditation.png",
     author: "Doable Team",
     category: "Wellness",
     tags: [

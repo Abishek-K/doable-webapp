@@ -76,3 +76,39 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* ── Blog article prose overrides ─────────────────────── */
+.blog-prose h2 {
+  @apply mt-10 mb-4 text-2xl font-bold tracking-tight text-slate-900;
+}
+.blog-prose h3 {
+  @apply mt-8 mb-3 text-xl font-semibold text-slate-800;
+}
+.blog-prose p {
+  @apply mb-5 leading-[1.8] text-slate-700;
+}
+.blog-prose ul {
+  @apply mb-5 ml-5 list-disc space-y-2 text-slate-700;
+}
+.blog-prose ol {
+  @apply mb-5 ml-5 list-decimal space-y-2 text-slate-700;
+}
+.blog-prose li {
+  @apply leading-[1.7];
+}
+.blog-prose blockquote {
+  @apply my-6 border-l-4 border-blue-400 bg-blue-50/50 py-3 pl-5 pr-4 italic text-slate-600;
+}
+.blog-prose code {
+  @apply rounded bg-slate-100 px-1.5 py-0.5 text-sm font-medium text-slate-800;
+}
+.blog-prose strong {
+  @apply font-bold text-slate-900;
+}
+.blog-prose a {
+  @apply font-medium text-blue-600 underline decoration-blue-200 underline-offset-2 transition-colors hover:text-blue-800 hover:decoration-blue-400;
+}
+.blog-prose img {
+  @apply my-6 w-full rounded-xl;
+}
+

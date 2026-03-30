@@ -134,28 +134,52 @@ service cloud.firestore {
       return request.resource.data.keys().hasAll([
           'title',
           'slug',
+          'excerpt',
           'contentMarkdown',
           'coverUrl',
-          'published',
+          'author',
+          'category',
+          'tags',
+          'readingTime',
+          'status',
+          'seo',
           'createdAt',
           'updatedAt'
         ]) &&
         request.resource.data.keys().hasOnly([
           'title',
           'slug',
+          'excerpt',
           'contentMarkdown',
           'coverUrl',
-          'published',
+          'author',
+          'category',
+          'tags',
+          'readingTime',
+          'status',
+          'seo',
+          'publishedAt',
           'createdAt',
           'updatedAt'
         ]) &&
         request.resource.data.title is string &&
         request.resource.data.slug is string &&
+        request.resource.data.excerpt is string &&
         request.resource.data.contentMarkdown is string &&
         request.resource.data.coverUrl is string &&
-        request.resource.data.published is bool &&
+        request.resource.data.author is string &&
+        request.resource.data.category is string &&
+        request.resource.data.tags is list &&
+        request.resource.data.readingTime is int &&
+        request.resource.data.readingTime > 0 &&
+        request.resource.data.status in ['draft', 'published'] &&
+        request.resource.data.seo is map &&
+        request.resource.data.seo.keys().hasOnly(['metaTitle', 'metaDescription']) &&
+        request.resource.data.seo.metaTitle is string &&
+        request.resource.data.seo.metaDescription is string &&
         request.resource.data.createdAt is timestamp &&
-        request.resource.data.updatedAt is timestamp;
+        request.resource.data.updatedAt is timestamp &&
+        (!request.resource.data.keys().hasAny(['publishedAt']) || request.resource.data.publishedAt is timestamp || request.resource.data.publishedAt == null);
     }
 
     function validPaymentDoc() {
@@ -245,7 +269,7 @@ service cloud.firestore {
     }
 
     match /blogs/{blogId} {
-      allow read: if resource.data.published == true || isAdmin();
+      allow read: if resource.data.status == 'published' || isAdmin();
       allow create, update: if isAdmin() && validBlogDoc();
       allow delete: if isAdmin();
     }

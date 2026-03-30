@@ -14,8 +14,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Jobl.io",
-  description: "AI Resume Tracking and Interview Prep",
+  title: "Doable — Turn Ideas Into Daily Action",
+  description: "Read and listen to bestselling book summaries in minutes. Build stronger habits, sharper focus, and better routines with Doable.",
   icons: {
     icon: "/icon.svg",
     shortcut: "/icon.svg",
