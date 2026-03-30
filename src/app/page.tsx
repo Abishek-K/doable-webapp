@@ -1,17 +1,28 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import Navigation from "@/components/Navigation";
 import FAQAccordion, { type FAQItem } from "@/components/FAQAccordion";
 import CategoryCardsSection from "@/components/CategoryCardsSection";
 import PlainBlocksCarouselSection from "@/components/PlainBlocksCarouselSection";
 import ReviewCarouselSection from "@/components/ReviewCarouselSection";
 import InsightsSection from "@/components/InsightsSection";
-import MarketingFooter from "@/components/MarketingFooter";
 
 export const metadata: Metadata = {
-  title: "Book Summaries App",
-  description: "Read and listen to bestselling book summaries in minutes",
+  title: "Doable — Turn Books Into Action in 10 Minutes",
+  description:
+    "Stop collecting highlights and start building habits. Doable extracts core frameworks from world-class books and turns them into 10-minute daily missions you can act on immediately.",
+  openGraph: {
+    title: "Doable — Turn Books Into Action in 10 Minutes",
+    description:
+      "Stop collecting highlights and start building habits. Doable extracts core frameworks from world-class books and turns them into 10-minute daily missions.",
+    url: "https://www.doable.app",
+    type: "website",
+  },
+  twitter: {
+    title: "Doable — Turn Books Into Action in 10 Minutes",
+    description:
+      "Stop collecting highlights and start building habits. Doable turns world-class books into 10-minute daily missions.",
+  },
 };
 
 export const runtime = "nodejs";
@@ -124,33 +135,76 @@ function EmailSignupSection() {
 
 function HeroSection() {
   return (
-    <section
-      className="bg-[#f2f2f2] bg-cover bg-center bg-no-repeat px-4 py-35 font-sans sm:px-6 sm:py-36 lg:py-44"
-      style={{ backgroundImage: "url('/images/hero-bg.png')" }}
-    >
-      <div className="mx-auto flex w-full max-w-[1400px] flex-col items-center text-center">
-        <h1 className="max-w-[1320px] text-[clamp(1.35rem,4vw,4.5rem)] font-medium leading-[0.95] tracking-[-0.04em] text-black">
-          <span className="relative inline-block font-black">
-            <span className="relative z-10">Organize</span>
-            <span
-              aria-hidden="true"
-              className="absolute bottom-[0.11em] left-[0.02em] z-0 h-[0.15em] w-[102%] rounded-[6px] bg-[#f3bfd2]"
-            />
-          </span>{" "}
-          everything
-          <br />
-          in your{" "}
-          <span className="font-semibold text-[#8eaedd]">
-            life
-          </span>
-        </h1>
+    <section className="bg-white px-4 pb-10 pt-6 font-sans sm:px-6 sm:pb-14 sm:pt-8 lg:px-8 lg:pb-16 lg:pt-10">
+      <div className="mx-auto w-full max-w-[1200px]">
+        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+          {/* Left Content */}
+          <div className="flex flex-col">
+            {/* Eyebrow tag */}
+            <div className="inline-flex w-fit items-center rounded-full bg-[#fef3e2] px-4 py-1.5 text-xs font-semibold tracking-widest text-[#c2693a] uppercase">
+              Execution-First Learning
+            </div>
 
-        <Link
-          href="/pricing"
-          className="mt-7 inline-flex h-[41px] w-full max-w-[290px] items-center justify-center rounded-full bg-black px-5 text-[clamp(0.75rem,1.15vw,1.55rem)] font-medium text-white shadow-[0_14px_22px_rgba(0,0,0,0.22)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#111111]"
-        >
-          Get Started
-        </Link>
+            {/* Headline */}
+            <h1 className="mt-5 text-[2.75rem] font-extrabold leading-[1.05] tracking-tight text-[#1a1a1a] sm:text-5xl lg:text-[3.5rem]">
+              Turn books into action in{" "}
+              <em className="not-italic font-extrabold italic text-[#e07b39]">
+                10 minutes.
+              </em>
+            </h1>
+
+            {/* Subtitle */}
+            <p className="mt-5 text-base leading-relaxed text-[#5a5a5a] sm:text-lg">
+              Most people read and forget. Doers read and act. Doable breaks
+              down powerful books into sharp, structured summaries with one
+              goal: help you apply what matters immediately.
+            </p>
+
+            {/* CTA Button */}
+            <div className="mt-8">
+              <Link
+                href="/signup"
+                className="inline-flex items-center justify-center rounded-full bg-[#e07b39] px-8 py-3.5 text-base font-semibold text-white shadow-md transition-all hover:bg-[#c96d2e] hover:-translate-y-0.5"
+              >
+                Start free trial
+              </Link>
+            </div>
+
+            {/* Social Proof */}
+            <div className="mt-8 flex items-center gap-3">
+              {/* Stacked avatar circles */}
+              <div className="flex -space-x-2">
+                {["#c2693a", "#7b9eb8", "#8f7bb5"].map((color, i) => (
+                  <div
+                    key={i}
+                    className="h-9 w-9 rounded-full border-2 border-[#f7f5f2]"
+                    style={{ backgroundColor: color }}
+                    aria-hidden="true"
+                  />
+                ))}
+              </div>
+              <p className="text-sm text-[#5a5a5a]">
+                Trusted by{" "}
+                <span className="font-bold text-[#1a1a1a]">10,000+ Doers</span>{" "}
+                building faster careers and sharper lives
+              </p>
+            </div>
+          </div>
+
+          {/* Right Content — Hero Image */}
+          <div className="flex items-center justify-center">
+            <div className="relative w-full max-w-[540px] overflow-hidden rounded-3xl">
+              <Image
+                src="/images/hero_desktop.webp"
+                alt="Doable app showing a Deep Work Action session"
+                width={1080}
+                height={900}
+                className="h-auto w-full object-cover"
+                priority
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -196,37 +250,32 @@ function MemberHappinessSection() {
 
 export default function HomePage() {
   return (
-    <>
-      <Navigation />
-      <main className="min-h-screen">
-        <HeroSection />
+    <main className="min-h-screen">
+      <HeroSection />
 
-        <CategoryCardsSection />
+      <CategoryCardsSection />
 
-        <PlainBlocksCarouselSection />
+      <PlainBlocksCarouselSection />
 
-        <MemberHappinessSection />
+      <MemberHappinessSection />
 
-        <ReviewCarouselSection />
+      <ReviewCarouselSection />
 
-        <InsightsSection />
+      <InsightsSection />
 
-        <section className="bg-white px-4 py-12 sm:px-6 sm:py-14">
-          <div className="mx-auto w-full max-w-[820px]">
-            <h2 className="text-center text-4xl font-semibold tracking-tight text-[#2b2b2b] sm:text-5xl">
-              Frequently asked questions
-            </h2>
+      <section className="bg-white px-4 py-12 sm:px-6 sm:py-14">
+        <div className="mx-auto w-full max-w-[820px]">
+          <h2 className="text-center text-4xl font-semibold tracking-tight text-[#2b2b2b] sm:text-5xl">
+            Frequently asked questions
+          </h2>
 
-            <div id="faq" className="mt-12">
-              <FAQAccordion items={faqItems} />
-            </div>
+          <div id="faq" className="mt-12">
+            <FAQAccordion items={faqItems} />
           </div>
-        </section>
+        </div>
+      </section>
 
-        <EmailSignupSection />
-
-        <MarketingFooter />
-      </main>
-    </>
+      <EmailSignupSection />
+    </main>
   );
 }

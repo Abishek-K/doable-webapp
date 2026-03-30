@@ -1,5 +1,24 @@
+import type { Metadata } from "next";
 import Navigation from "@/components/Navigation";
 import MarketingFooter from "@/components/MarketingFooter";
+
+export const metadata: Metadata = {
+  title: "About Doable — Learning That Actually Changes Your Life",
+  description:
+    "Learn how Doable transforms world-class books into simple, actionable 10-minute insights. Discover our mission to make real learning accessible to everyone.",
+  openGraph: {
+    title: "About Doable — Learning That Actually Changes Your Life",
+    description:
+      "Doable turns the world's best ideas into actionable 10-minute insights. Discover the mission behind the platform built for execution, not consumption.",
+    url: "https://www.doable.app/about",
+    type: "website",
+  },
+  twitter: {
+    title: "About Doable — Learning That Actually Changes Your Life",
+    description:
+      "Discover how Doable turns world-class books into 10-minute actionable missions.",
+  },
+};
 import LearningBrokenSection from "@/components/LearningBrokenSection";
 import SolutionSection from "@/components/SolutionSection";
 import SocialProofSection from "@/components/SocialProofSection";

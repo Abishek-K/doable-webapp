@@ -1,0 +1,36 @@
+name: Vertex AI Config
+version: 1.0.0
+schema: v1
+
+models:
+  - name: Gemini 2.5 Flash
+    provider: gemini
+    model: models/gemini-2.5-flash
+    apiKey: AQ.Ab8RN6KaBq6_ySxuoNG7iFoJzDPlqNXAd3LCmI324HeMlDhynQ
+    roles:
+      - chat
+      - edit
+
+  - name: Gemini 2.5 Pro
+    provider: gemini
+    model: models/gemini-2.5-pro
+    apiKey: AQ.Ab8RN6KaBq6_ySxuoNG7iFoJzDPlqNXAd3LCmI324HeMlDhynQ
+    roles:
+      - chat
+      - edit
+
+  - name: Gemini 3 Pro Preview
+    provider: gemini
+    model: models/gemini-3-pro-preview
+    apiKey: AQ.Ab8RN6KaBq6_ySxuoNG7iFoJzDPlqNXAd3LCmI324HeMlDhynQ
+    roles:
+      - chat
+      - edit
+
+  - name: Gemini 3.1 Pro Preview
+    provider: gemini
+    model: models/gemini-3.1-pro-preview
+    apiKey: AQ.Ab8RN6KaBq6_ySxuoNG7iFoJzDPlqNXAd3LCmI324HeMlDhynQ
+    roles:
+      - chat
+      - edit

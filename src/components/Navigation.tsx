@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 interface NavigationProps {
   showBackButton?: boolean;
@@ -19,6 +22,14 @@ export default function Navigation({
   const rightTextLink = { href: "/login", label: "Log in" };
   void isAuthenticated;
 
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 0);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <div className="sticky top-0 z-50 w-full font-sans">
       <aside className="flex h-11 w-full items-center justify-center bg-[#f4c400] px-4">
@@ -30,7 +41,13 @@ export default function Navigation({
         </Link>
       </aside>
 
-      <header className="w-full border-b border-slate-200 bg-white shadow-[0_1px_0_rgba(15,23,42,0.04)]">
+      <header
+        className={`w-full bg-white transition-shadow duration-300 ${
+          scrolled
+            ? "shadow-[0_4px_16px_rgba(15,23,42,0.08)]"
+            : "border-b border-slate-200"
+        }`}
+      >
         <div className="mx-auto flex h-[72px] w-full max-w-7xl items-center justify-between px-4 font-sans sm:px-6 lg:px-8">
           <div className="flex items-center gap-8 lg:gap-12">
             <Link href="/" className="flex items-center gap-3">

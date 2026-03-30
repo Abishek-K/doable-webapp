@@ -36,10 +36,10 @@ const footerColumns: FooterColumn[] = [
   {
     title: "Legal",
     links: [
-      { label: "Terms of Service", href: "#" },
-      { label: "Privacy Policy", href: "#" },
-      { label: "Subscription & Refund Policy", href: "#" },
-      { label: "Cookie Policy", href: "#" },
+            { label: "Terms of Service", href: "/terms" },
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Subscription & Refund Policy", href: "/subscription-policy-and-refund-policy" },
+      { label: "Cookie Policy", href: "/cookie-policy" },
     ],
   },
 ];

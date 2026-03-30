@@ -5,14 +5,20 @@ import MarketingFooter from "@/components/MarketingFooter";
 import Navigation from "@/components/Navigation";
 
 export const metadata: Metadata = {
-  title: "Explore | Doable",
+  title: "Explore Book Summaries — Doable",
   description:
-    "Browse book summaries by topic, search the library, and pick up curated collections built for action.",
+    "Browse hundreds of actionable book summaries by topic — productivity, mindset, leadership, habits, and more. Find your next 10-minute mission on Doable.",
   openGraph: {
-    title: "Explore | Doable",
+    title: "Explore Book Summaries — Doable",
     description:
-      "Browse book summaries by topic, search the library, and pick up curated collections built for action.",
+      "Browse hundreds of actionable book summaries by topic. Find your next 10-minute mission on Doable.",
+    url: "https://www.doable.app/explore",
     type: "website",
+  },
+  twitter: {
+    title: "Explore Book Summaries — Doable",
+    description:
+      "Browse hundreds of actionable book summaries by topic on Doable.",
   },
 };
 

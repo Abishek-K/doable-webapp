@@ -10,14 +10,20 @@ export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Blog | Doable",
+    title: "Blog — Doable",
     description:
-      "Actionable insights, reading strategies, and productivity stories from the Doable blog.",
+      "Actionable insights, reading strategies, habit-building tips, and productivity stories from the Doable team. Read, learn, and do more.",
     openGraph: {
-      title: "Blog | Doable",
+      title: "Blog — Doable",
       description:
-        "Actionable insights, reading strategies, and productivity stories from the Doable blog.",
+        "Actionable insights, reading strategies, habit-building tips, and productivity stories from the Doable team.",
+      url: "https://www.doable.app/blogs",
       type: "website",
+    },
+    twitter: {
+      title: "Blog — Doable",
+      description:
+        "Actionable insights, reading strategies, and productivity stories from the Doable team.",
     },
   };
 }
