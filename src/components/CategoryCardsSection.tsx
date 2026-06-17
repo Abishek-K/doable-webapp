@@ -1,19 +1,17 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
 const categories = [
-  "Mindset & Personal Growth",
-  "Health, Wellness & Mindfulness",
-  "Career, Leadership & Business",
-  "Relationships & Social Skills",
-  "Technology, Innovation & Future",
-  "Society, Culture & Human Behaviour",
-  "Money, Investing & Economics",
-  "Productivity & Habits",
-  "Stories & Fiction",
-] as const;
+  { label: "Productivity & Habits", icon: "/images/categories/productivity-habits.svg" },
+  { label: "Business & Career", icon: "/images/categories/business-career.svg" },
+  { label: "Psychology & Thinking", icon: "/images/categories/psychology-thinking.svg" },
+  { label: "Money & Influence", icon: "/images/categories/money-influence.svg" },
+  { label: "Mind & Wellbeing", icon: "/images/categories/mind-wellbeing.svg" },
+  { label: "Relationships & Communication", icon: "/images/categories/relationships-communication.svg" },
+];
 
 export default function CategoryCardsSection() {
   const [selectedIndexes, setSelectedIndexes] = useState<number[]>([]);
@@ -30,16 +28,16 @@ export default function CategoryCardsSection() {
     <section className="bg-white px-4 py-[64px] font-sans sm:px-6 lg:px-8">
       <div className="mx-auto w-full max-w-[1100px]">
         <h2 className="mx-auto mb-12 max-w-3xl text-center text-[2.1rem] font-semibold tracking-tight text-[#2c2c2c] sm:text-[2.5rem]">
-          What do you want to get better at?
+          What do you want to improve right now?
         </h2>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {categories.map((category, index) => {
+          {categories.map(({ label, icon }, index) => {
             const isSelected = selectedIndexes.includes(index);
 
             return (
               <button
-                key={category}
+                key={label}
                 type="button"
                 onClick={() => toggleCategory(index)}
                 className={cn(
@@ -53,13 +51,17 @@ export default function CategoryCardsSection() {
                 aria-pressed={isSelected}
               >
                 <span className="pr-4 text-[1.15rem] font-medium leading-snug text-[#333333]">
-                  {category}
+                  {label}
                 </span>
 
                 <span className="flex shrink-0 items-center gap-3">
-                  <span
+                  <Image
+                    src={icon}
+                    alt=""
                     aria-hidden="true"
-                    className="h-9 w-9 rounded-full bg-orange-500"
+                    width={48}
+                    height={48}
+                    className="h-12 w-12"
                   />
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

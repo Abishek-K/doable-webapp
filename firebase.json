@@ -6,7 +6,7 @@
     "indexes": "firestore.indexes.json"
   },
   "apphosting": {
-    "backendId": "doable-webapp-backend",
+    "backendId": "doable-prod-backend",
     "rootDir": "/",
     "ignore": [
       "node_modules",
