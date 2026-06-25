@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 interface NavigationProps {
@@ -23,6 +24,7 @@ export default function Navigation({
   void isAuthenticated;
 
   const [scrolled, setScrolled] = useState(false);
+  const [showBanner, setShowBanner] = useState(true);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 0);
@@ -31,29 +33,55 @@ export default function Navigation({
   }, []);
 
   return (
-    <div className="sticky top-0 z-50 w-full font-sans">
-      <aside className="flex h-11 w-full items-center justify-center bg-[#f4c400] px-4">
-        <Link
-          href="/pricing"
-          className="text-center text-sm font-semibold text-[#1f1f1f] transition-opacity duration-200 hover:underline hover:opacity-90 sm:text-[15px]"
-        >
-          Start your free 7-day trial today.
-        </Link>
-      </aside>
+    <>
+      {showBanner && (
+        <aside className="relative flex h-[58px] w-full items-center justify-center bg-[#f4c400] px-4 font-sans">
+          <Link
+            href="/pricing"
+            className="text-center text-base font-semibold text-[#1f1f1f] transition-opacity duration-200 hover:underline hover:opacity-90"
+          >
+            Start your free 7-day trial today.
+          </Link>
+          <button
+            onClick={() => setShowBanner(false)}
+            aria-label="Dismiss announcement"
+            className="absolute right-4 p-1 text-[#1f1f1f] opacity-70 transition-opacity hover:opacity-100 sm:right-6 lg:right-8"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </aside>
+      )}
 
-      <header
-        className={`w-full bg-white transition-shadow duration-300 ${
-          scrolled
-            ? "shadow-[0_4px_16px_rgba(15,23,42,0.08)]"
-            : "border-b border-slate-200"
-        }`}
-      >
-        <div className="mx-auto flex h-[72px] w-full max-w-7xl items-center justify-between px-4 font-sans sm:px-6 lg:px-8">
+      <div className="sticky top-0 z-50 w-full font-sans">
+        <header
+          className={`w-full bg-white transition-shadow duration-300 ${
+            scrolled
+              ? "shadow-[0_4px_16px_rgba(15,23,42,0.08)]"
+              : "border-b border-slate-200"
+          }`}
+        >
+        <div className="flex h-20 w-full items-center justify-between px-6 font-sans lg:px-12">
           <div className="flex items-center gap-8 lg:gap-12">
             <Link href="/" className="flex items-center gap-3">
-              <div
-                aria-hidden="true"
-                className="h-9 w-9 rounded-full bg-orange-500"
+              <Image
+                src="/images/doable-logo-transparent-2048.png"
+                alt="Doable Logo"
+                width={32}
+                height={32}
+                className="h-8 w-8 object-contain"
               />
               <span className="text-xl font-semibold tracking-tight text-slate-900">
                 Doable
@@ -69,10 +97,10 @@ export default function Navigation({
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`text-[1.02rem] transition-colors hover:text-slate-900 ${
+                    className={`text-base transition-colors hover:text-slate-900 ${
                       link.isActive
-                        ? "font-semibold text-slate-900"
-                        : "font-medium text-slate-700"
+                        ? "font-medium text-slate-900"
+                        : "font-normal text-slate-700"
                     }`}
                   >
                     {link.label}
@@ -94,13 +122,13 @@ export default function Navigation({
               <div className="hidden items-center gap-6 lg:flex">
                 <Link
                   href={rightTextLink.href}
-                  className="text-[1.02rem] font-medium text-slate-800 transition hover:text-slate-950"
+                  className="text-base font-medium text-slate-800 transition hover:text-slate-950"
                 >
                   {rightTextLink.label}
                 </Link>
                 <Link
                   href="/signup"
-                  className="inline-flex items-center justify-center rounded-full bg-[#1a73e8] px-6 py-2.5 text-[1rem] font-semibold text-white shadow-md shadow-blue-500/20 transition-colors hover:bg-[#1765cc]"
+                  className="inline-flex items-center justify-center rounded-full bg-[#1a73e8] px-6 py-2.5 text-base font-semibold text-white shadow-md shadow-blue-500/20 transition-colors hover:bg-[#1765cc]"
                 >
                   Try for free
                 </Link>
@@ -158,5 +186,6 @@ export default function Navigation({
         </div>
       </header>
     </div>
+    </>
   );
 }

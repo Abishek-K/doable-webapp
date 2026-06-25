@@ -88,8 +88,8 @@ export default function ReviewCarouselSection() {
   }, [visibleReviews.length]);
 
   return (
-    <section className="bg-white px-4 py-[64px] font-sans sm:px-6 lg:px-8">
-      <div className="mx-auto w-full max-w-[1200px]">
+    <section className="bg-white px-6 py-[64px] font-sans lg:px-12">
+      <div className="mx-auto w-full max-w-[1440px]">
         <div
           ref={scrollRef}
           className="flex gap-6 overflow-x-auto pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"

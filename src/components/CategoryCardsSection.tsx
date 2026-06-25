@@ -25,8 +25,8 @@ export default function CategoryCardsSection() {
   };
 
   return (
-    <section className="bg-white px-4 py-[64px] font-sans sm:px-6 lg:px-8">
-      <div className="mx-auto w-full max-w-[1100px]">
+    <section className="bg-white px-6 py-[64px] font-sans lg:px-12">
+      <div className="mx-auto w-full max-w-[1440px]">
         <h2 className="mx-auto mb-12 max-w-3xl text-center text-[2.1rem] font-semibold tracking-tight text-[#2c2c2c] sm:text-[2.5rem]">
           What do you want to improve right now?
         </h2>

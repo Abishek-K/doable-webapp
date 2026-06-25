@@ -40,13 +40,6 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@doableapp",
   },
-  icons: {
-    icon: [
-      { url: "/images/doable-logo-transparent-2048.png", type: "image/png" },
-    ],
-    shortcut: "/images/doable-logo-transparent-2048.png",
-    apple: "/images/doable-logo-transparent-2048.png",
-  },
 };
 
 export default function RootLayout({

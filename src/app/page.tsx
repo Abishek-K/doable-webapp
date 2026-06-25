@@ -88,7 +88,7 @@ async function handleEmailSignup(formData: FormData) {
 
 function EmailSignupSection() {
   return (
-    <section className="bg-white px-4 py-12 font-sans sm:px-6 sm:py-14 lg:px-8">
+    <section className="bg-white px-6 py-12 font-sans sm:py-14 lg:px-12">
       <div className="mx-auto w-full max-w-[820px] text-center">
         <h2 className="text-4xl font-bold tracking-tight text-[#2b2b2b] sm:text-5xl">
           Stay ahead every week
@@ -135,8 +135,8 @@ function EmailSignupSection() {
 
 function HeroSection() {
   return (
-    <section className="bg-white px-4 pb-10 pt-6 font-sans sm:px-6 sm:pb-14 sm:pt-8 lg:px-8 lg:pb-16 lg:pt-10">
-      <div className="mx-auto w-full max-w-[1200px]">
+    <section className="bg-white px-6 pb-10 pt-6 font-sans sm:pb-14 sm:pt-8 lg:px-12 lg:pb-16 lg:pt-10">
+      <div className="mx-auto w-full max-w-[1440px]">
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
           {/* Left Content */}
           <div className="flex flex-col">
@@ -221,8 +221,8 @@ const memberVisuals = [
 
 function MemberHappinessSection() {
   return (
-    <section className="bg-white px-4 py-12 font-sans sm:px-6 sm:py-14 lg:px-8">
-      <div className="mx-auto w-full max-w-[1200px]">
+    <section className="bg-white px-6 py-12 font-sans sm:py-14 lg:px-12">
+      <div className="mx-auto w-full max-w-[1440px]">
         <div className="relative mx-auto flex min-h-[320px] items-center justify-center md:min-h-[400px]">
           {memberVisuals.map((item) => (
             <div key={item.key} className={`absolute ${item.className}`}>
@@ -263,7 +263,7 @@ export default function HomePage() {
 
       <InsightsSection />
 
-      <section className="bg-white px-4 py-12 sm:px-6 sm:py-14">
+      <section className="bg-white px-6 py-12 sm:py-14 lg:px-12">
         <div className="mx-auto w-full max-w-[820px]">
           <h2 className="text-center text-4xl font-semibold tracking-tight text-[#2b2b2b] sm:text-5xl">
             Frequently asked questions

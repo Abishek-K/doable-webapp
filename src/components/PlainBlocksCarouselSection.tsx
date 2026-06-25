@@ -98,7 +98,7 @@ export default function PlainBlocksCarouselSection() {
   return (
     <section className="bg-white py-10 font-sans">
       <div className="w-full">
-        <div className="px-4 pb-8 text-center sm:px-6 lg:px-8">
+        <div className="px-6 pb-8 text-center lg:px-12">
           <h2 className="mx-auto max-w-3xl text-4xl font-semibold leading-tight tracking-tight text-[#2f2f32] sm:text-5xl lg:text-6xl">
             The mental health app for every moment
           </h2>
@@ -134,7 +134,7 @@ export default function PlainBlocksCarouselSection() {
 
         <div
           ref={trackRef}
-          className="flex snap-x snap-mandatory gap-5 overflow-x-auto pb-3 pl-4 pr-4 scroll-pl-4 [scrollbar-width:none] [-ms-overflow-style:none] sm:pl-6 sm:pr-6 sm:scroll-pl-6 lg:pl-8 lg:pr-8 lg:scroll-pl-8 [&::-webkit-scrollbar]:hidden"
+          className="flex snap-x snap-mandatory gap-5 overflow-x-auto pb-3 pl-6 pr-6 scroll-pl-6 [scrollbar-width:none] [-ms-overflow-style:none] lg:pl-12 lg:pr-12 lg:scroll-pl-12 [&::-webkit-scrollbar]:hidden"
         >
           {blockColors.map((color, index) => (
             <article
@@ -150,7 +150,7 @@ export default function PlainBlocksCarouselSection() {
           ))}
         </div>
 
-        <div className="mt-4 grid grid-cols-[1fr_auto_1fr] items-center px-4 sm:px-6 lg:px-8">
+        <div className="mt-4 grid grid-cols-[1fr_auto_1fr] items-center px-6 lg:px-12">
           <div aria-hidden="true" />
 
           <div className="flex items-center justify-center gap-3">

@@ -27,8 +27,8 @@ const insightCards: InsightCard[] = [
 
 export default function InsightsSection() {
   return (
-    <section className="bg-white px-4 py-16 font-sans sm:px-6 sm:py-20 lg:px-8">
-      <div className="mx-auto w-full max-w-[1280px]">
+    <section className="bg-white px-6 py-16 font-sans sm:py-20 lg:px-12">
+      <div className="mx-auto w-full max-w-[1440px]">
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="text-balance text-4xl font-black leading-[1.08] tracking-[-0.03em] text-[#101114] sm:text-5xl lg:text-6xl">
             Not another tool in your stack.
