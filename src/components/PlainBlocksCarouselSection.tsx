@@ -2,17 +2,20 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
-const blockColors = ["#bfd4ea", "#d8d1e8", "#f2d8d2"] as const;
+const blockColors = ["#fece00", "#3c197f", "#0061ee"] as const;
 const blockTabs = [
-  "Bite-sized bestsellers",
-  "Expert-led programs",
-  "Learning Spaces",
+  "15-Minute Summaries",
+  "Actionable Insights",
+  "Audio Learning",
 ] as const;
 
 export default function PlainBlocksCarouselSection() {
   const trackRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<Array<HTMLElement | null>>([]);
   const [activeIndex, setActiveIndex] = useState(0);
+
+  const scrollTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const isClickScrollingRef = useRef(false);
 
   const canScrollPrev = activeIndex > 0;
   const canScrollNext = activeIndex < blockColors.length - 1;
@@ -62,8 +65,14 @@ export default function PlainBlocksCarouselSection() {
       const leftInset = getTrackPaddingLeft(track);
       const targetLeft = Math.max(0, card.offsetLeft - leftInset);
 
+      isClickScrollingRef.current = true;
       setActiveIndex(clampedIndex);
       track.scrollTo({ left: targetLeft, behavior });
+
+      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+      scrollTimeoutRef.current = setTimeout(() => {
+        isClickScrollingRef.current = false;
+      }, 800);
     },
     []
   );
@@ -73,6 +82,14 @@ export default function PlainBlocksCarouselSection() {
     if (!track) return;
 
     const onScroll = () => {
+      if (isClickScrollingRef.current) {
+        if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+        scrollTimeoutRef.current = setTimeout(() => {
+          isClickScrollingRef.current = false;
+          updateActiveFromScroll();
+        }, 150);
+        return;
+      }
       updateActiveFromScroll();
     };
 
@@ -84,6 +101,7 @@ export default function PlainBlocksCarouselSection() {
     return () => {
       track.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", updateActiveFromScroll);
+      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
     };
   }, [scrollToIndex, updateActiveFromScroll]);
 
@@ -100,7 +118,7 @@ export default function PlainBlocksCarouselSection() {
       <div className="w-full">
         <div className="px-6 pb-8 text-center lg:px-12">
           <h2 className="mx-auto max-w-3xl text-4xl font-semibold leading-tight tracking-tight text-[#2f2f32] sm:text-5xl lg:text-6xl">
-            The mental health app for every moment
+            Learn smarter. Act faster. Grow every day.
           </h2>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
@@ -143,7 +161,7 @@ export default function PlainBlocksCarouselSection() {
               ref={(element) => {
                 cardRefs.current[index] = element;
               }}
-              className="h-[280px] w-[calc(100vw-140px)] shrink-0 snap-start rounded-[40px] sm:h-[340px] sm:w-[calc(100vw-210px)] lg:h-[430px] lg:w-[calc(100vw-380px)]"
+              className="h-[360px] w-[calc(100vw-140px)] shrink-0 snap-start rounded-[40px] sm:h-[440px] sm:w-[calc(100vw-210px)] lg:h-[560px] lg:w-[calc(100vw-380px)]"
               style={{ backgroundColor: color }}
               aria-label={`Carousel block ${index + 1}`}
             />
