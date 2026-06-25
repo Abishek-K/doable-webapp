@@ -135,20 +135,20 @@ function EmailSignupSection() {
 
 function HeroSection() {
   return (
-    <section className="bg-white px-6 pb-10 pt-6 font-sans sm:pb-14 sm:pt-8 lg:px-12 lg:pb-16 lg:pt-10">
+    <section className="flex min-h-[85vh] items-center bg-white px-6 py-12 font-sans sm:min-h-[80vh] sm:py-16 lg:min-h-[90vh] lg:px-12 lg:py-24">
       <div className="mx-auto w-full max-w-[1440px]">
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
           {/* Left Content */}
           <div className="flex flex-col">
             {/* Eyebrow tag */}
-            <div className="inline-flex w-fit items-center rounded-full bg-[#fef3e2] px-4 py-1.5 text-xs font-semibold tracking-widest text-[#c2693a] uppercase">
+            <div className="inline-flex w-fit items-center rounded-full bg-[#fff8d6] px-4 py-1.5 text-xs font-semibold tracking-widest text-[#a38200] uppercase">
               Execution-First Learning
             </div>
 
             {/* Headline */}
             <h1 className="mt-5 text-[2.75rem] font-extrabold leading-[1.05] tracking-tight text-[#1a1a1a] sm:text-5xl lg:text-[3.5rem]">
               Turn books into action in{" "}
-              <em className="not-italic font-extrabold italic text-[#e07b39]">
+              <em className="not-italic font-extrabold italic text-[#f4c400]">
                 10 minutes.
               </em>
             </h1>
@@ -164,7 +164,7 @@ function HeroSection() {
             <div className="mt-8">
               <Link
                 href="/signup"
-                className="inline-flex items-center justify-center rounded-full bg-[#e07b39] px-8 py-3.5 text-base font-semibold text-white shadow-md transition-all hover:bg-[#c96d2e] hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center rounded-full bg-[#f4c400] px-8 py-3.5 text-base font-semibold text-[#1a1a1a] shadow-md transition-all hover:bg-[#e0b400] hover:-translate-y-0.5"
               >
                 Start free trial
               </Link>
@@ -174,13 +174,19 @@ function HeroSection() {
             <div className="mt-8 flex items-center gap-3">
               {/* Stacked avatar circles */}
               <div className="flex -space-x-2">
-                {["#c2693a", "#7b9eb8", "#8f7bb5"].map((color, i) => (
+                {["/images/review1.png", "/images/review2.png", "/images/review3.png"].map((src, i) => (
                   <div
                     key={i}
-                    className="h-9 w-9 rounded-full border-2 border-[#f7f5f2]"
-                    style={{ backgroundColor: color }}
-                    aria-hidden="true"
-                  />
+                    className="relative h-9 w-9 overflow-hidden rounded-full border-2 border-[#f7f5f2]"
+                  >
+                    <Image
+                      src={src}
+                      alt={`Reviewer avatar ${i + 1}`}
+                      fill
+                      className="object-cover"
+                      sizes="36px"
+                    />
+                  </div>
                 ))}
               </div>
               <p className="text-sm text-[#5a5a5a]">
@@ -193,9 +199,9 @@ function HeroSection() {
 
           {/* Right Content — Hero Image */}
           <div className="flex items-center justify-center">
-            <div className="relative w-full max-w-[540px] overflow-hidden rounded-3xl">
+            <div className="relative w-full max-w-[640px] overflow-hidden rounded-3xl xl:max-w-[720px]">
               <Image
-                src="/images/hero_desktop.webp"
+                src="/images/doable-book-summaries-hero.webp"
                 alt="Doable app showing a Deep Work Action session"
                 width={1080}
                 height={900}
