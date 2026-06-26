@@ -217,15 +217,15 @@ function HeroSection() {
 }
 
 const memberVisuals = [
-  { key: "top-left", className: "left-[8%] top-0 h-20 w-20 md:h-28 md:w-28" },
-  { key: "bottom-left", className: "left-[20%] bottom-2 h-16 w-16 md:h-24 md:w-24" },
-  { key: "top-mid-left", className: "left-[42%] top-3 h-8 w-8 md:h-10 md:w-10" },
-  { key: "top-mid-right", className: "right-[30%] top-7 h-7 w-7 md:h-8 md:w-8" },
-  { key: "top-right", className: "right-[8%] top-0 h-20 w-20 md:h-28 md:w-28" },
-  { key: "bottom-right", className: "right-[18%] bottom-5 h-14 w-14 md:h-20 md:w-20" },
+  { key: "top-left", className: "left-[8%] top-0 h-20 w-20 md:h-28 md:w-28", src: "/images/doable-icon-book.svg" },
+  { key: "bottom-left", className: "left-[20%] bottom-2 h-16 w-16 md:h-24 md:w-24", src: "/images/doable-icon-achievement.svg" },
+  { key: "top-mid-left", className: "left-[42%] top-3 h-16 w-16 md:h-24 md:w-24", src: "/images/doable-icon-ideas.svg" },
+  { key: "top-mid-right", className: "right-[30%] top-7 h-16 w-16 md:h-24 md:w-24", src: "/images/doable-icon-growth.svg" },
+  { key: "top-right", className: "right-[8%] top-0 h-20 w-20 md:h-28 md:w-28", src: "/images/doable-icon-audio.svg" },
+  { key: "bottom-right", className: "right-[18%] bottom-5 h-14 w-14 md:h-20 md:w-20", src: "/images/doable-icon-goals.svg" },
 ] as const;
 
-function MemberHappinessSection() {
+function FutureSelfSection() {
   return (
     <section className="bg-white px-6 py-12 font-sans sm:py-14 lg:px-12">
       <div className="mx-auto w-full max-w-[1440px]">
@@ -233,7 +233,7 @@ function MemberHappinessSection() {
           {memberVisuals.map((item) => (
             <div key={item.key} className={`absolute ${item.className}`}>
               <Image
-                src="/icon.svg"
+                src={item.src}
                 alt=""
                 aria-hidden="true"
                 fill
@@ -244,7 +244,7 @@ function MemberHappinessSection() {
           ))}
 
           <h2 className="relative z-10 mx-auto max-w-[980px] px-4 text-center text-4xl font-semibold leading-[1.1] tracking-[-0.02em] text-[#2f2f32] sm:text-5xl lg:text-7xl">
-            Members are enjoying happier and healthier lives
+            Become the person your future self will thank you for.
           </h2>
         </div>
       </div>
@@ -263,7 +263,7 @@ export default function HomePage() {
 
       <PlainBlocksCarouselSection />
 
-      <MemberHappinessSection />
+      <FutureSelfSection />
 
       <ReviewCarouselSection />
 

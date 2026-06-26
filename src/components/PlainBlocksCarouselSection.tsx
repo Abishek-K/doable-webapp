@@ -1,12 +1,49 @@
 "use client";
 
+import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 
-const blockColors = ["#fece00", "#3c197f", "#0061ee"] as const;
-const blockTabs = [
-  "15-Minute Summaries",
-  "Actionable Insights",
-  "Audio Learning",
+const carouselCards = [
+  {
+    color: "#fece00",
+    textColor: "text-[#2f2f32]",
+    tabLabel: "15-Minute Summaries",
+    headline: "Get the best ideas from world-class books in minutes",
+    description:
+      "Discover powerful lessons from productivity, business, psychology, health, and personal growth books without spending hours reading.",
+    buttonText: "Explore library",
+    media: {
+      src: "/images/doable-book-summaries-hero.webp",
+      alt: "Doable book summaries hero graphic",
+    },
+  },
+  {
+    color: "#0061ee",
+    textColor: "text-white",
+    tabLabel: "Actionable Insights",
+    headline: "Turn knowledge into action",
+    description:
+      "Every summary is packed with practical takeaways, frameworks, and next steps you can apply immediately in work and life.",
+    buttonText: "See how it works",
+    media: {
+      src: "/images/doable-actionable-insights.webp",
+      alt: "Doable actionable insights hero graphic",
+    },
+  },
+  {
+    color: "#3c197f",
+    textColor: "text-white",
+    tabLabel: "Audio Learning",
+    headline: "Learn while you walk, drive, or work out",
+    description:
+      "Listen to concise audio summaries and keep growing even when you don't have time to sit down and read.",
+    buttonText: "Try audio mode",
+    media: {
+      src: "/images/doable-audio-summaries.webp",
+      alt: "Doable audio summaries hero graphic",
+      containerClassName: "scale-105 sm:scale-110 lg:scale-125",
+    },
+  },
 ] as const;
 
 export default function PlainBlocksCarouselSection() {
@@ -18,7 +55,7 @@ export default function PlainBlocksCarouselSection() {
   const isClickScrollingRef = useRef(false);
 
   const canScrollPrev = activeIndex > 0;
-  const canScrollNext = activeIndex < blockColors.length - 1;
+  const canScrollNext = activeIndex < carouselCards.length - 1;
 
   const getTrackPaddingLeft = (track: HTMLDivElement) => {
     const styles = window.getComputedStyle(track);
@@ -122,11 +159,11 @@ export default function PlainBlocksCarouselSection() {
           </h2>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
-            {blockTabs.map((label, index) => {
+            {carouselCards.map((card, index) => {
               const isActive = activeIndex === index;
               return (
                 <button
-                  key={label}
+                  key={card.tabLabel}
                   type="button"
                   onClick={() => scrollToIndex(index)}
                   className={`inline-flex min-h-[54px] items-center justify-center rounded-full px-6 py-3 text-base font-semibold transition-all duration-200 sm:px-8 sm:text-[1.05rem] ${
@@ -134,7 +171,7 @@ export default function PlainBlocksCarouselSection() {
                       ? "bg-[#2f2f32] text-white"
                       : "bg-[#ece8e6] text-[#1f2937] hover:bg-[#e5dfdc]"
                   }`}
-                  aria-label={`Show ${label}`}
+                  aria-label={`Show ${card.tabLabel}`}
                   aria-pressed={isActive}
                 >
                   {isActive ? (
@@ -143,7 +180,7 @@ export default function PlainBlocksCarouselSection() {
                       className="mr-3 h-2.5 w-2.5 rounded-full bg-white"
                     />
                   ) : null}
-                  {label}
+                  {card.tabLabel}
                 </button>
               );
             })}
@@ -154,17 +191,56 @@ export default function PlainBlocksCarouselSection() {
           ref={trackRef}
           className="flex snap-x snap-mandatory gap-5 overflow-x-auto pb-3 pl-6 pr-6 scroll-pl-6 [scrollbar-width:none] [-ms-overflow-style:none] lg:pl-12 lg:pr-12 lg:scroll-pl-12 [&::-webkit-scrollbar]:hidden"
         >
-          {blockColors.map((color, index) => (
+          {carouselCards.map((card, index) => (
             <article
-              key={color}
+              key={card.tabLabel}
               data-block-card
               ref={(element) => {
                 cardRefs.current[index] = element;
               }}
-              className="h-[360px] w-[calc(100vw-140px)] shrink-0 snap-start rounded-[40px] sm:h-[440px] sm:w-[calc(100vw-210px)] lg:h-[560px] lg:w-[calc(100vw-380px)]"
-              style={{ backgroundColor: color }}
+              className={`relative flex h-[360px] w-[calc(100vw-140px)] shrink-0 snap-start flex-col overflow-hidden rounded-[40px] sm:h-[440px] sm:w-[calc(100vw-210px)] sm:flex-row lg:h-[560px] lg:w-[calc(100vw-380px)] ${card.textColor}`}
+              style={{ backgroundColor: card.color }}
               aria-label={`Carousel block ${index + 1}`}
-            />
+            >
+              {/* Left Media Area */}
+              <div className="flex flex-1 items-center justify-center p-4 sm:p-6 lg:p-8">
+                {card.media ? (
+                  <div
+                    className={`relative h-full w-full overflow-hidden rounded-2xl ${
+                      "containerClassName" in card.media
+                        ? card.media.containerClassName
+                        : ""
+                    }`}
+                  >
+                    <Image
+                      src={card.media.src}
+                      alt={card.media.alt}
+                      fill
+                      className="object-contain"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  </div>
+                ) : null}
+              </div>
+
+              {/* Right Content Area */}
+              <div className="flex flex-1 flex-col justify-center p-6 sm:p-10 lg:p-14 lg:pr-20">
+                <h3 className="text-2xl font-bold leading-tight sm:text-3xl lg:text-[2.5rem]">
+                  {card.headline}
+                </h3>
+                <p className="mt-4 text-sm font-medium leading-relaxed sm:mt-6 sm:text-base lg:text-lg">
+                  {card.description}
+                </p>
+                <div className="mt-6 sm:mt-8 lg:mt-10">
+                  <button
+                    type="button"
+                    className="inline-flex h-12 items-center justify-center rounded-full bg-white px-6 text-sm font-bold text-[#2f2f32] transition-transform hover:-translate-y-0.5 sm:h-14 sm:px-8 sm:text-base"
+                  >
+                    {card.buttonText}
+                  </button>
+                </div>
+              </div>
+            </article>
           ))}
         </div>
 
@@ -172,7 +248,7 @@ export default function PlainBlocksCarouselSection() {
           <div aria-hidden="true" />
 
           <div className="flex items-center justify-center gap-3">
-            {blockColors.map((_, index) => (
+            {carouselCards.map((_, index) => (
               <span
                 key={`indicator-${index}`}
                 aria-hidden="true"

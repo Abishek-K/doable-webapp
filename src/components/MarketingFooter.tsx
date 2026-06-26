@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
+import { Twitter, Linkedin, Instagram } from "lucide-react";
 
 type FooterColumn = {
   title: string;
@@ -45,20 +47,29 @@ const footerColumns: FooterColumn[] = [
 ];
 
 const socialLinks = [
-  { label: "Twitter / X", href: "#" },
-  { label: "LinkedIn", href: "#" },
-  { label: "Instagram", href: "#" },
+  { label: "Twitter / X", href: "#", icon: Twitter },
+  { label: "LinkedIn", href: "#", icon: Linkedin },
+  { label: "Instagram", href: "#", icon: Instagram },
 ];
 
 export default function MarketingFooter() {
   return (
-    <footer className="bg-[#eef2f3] font-sans text-[#46525e]">
-      <div className="mx-auto w-full max-w-7xl px-4 pb-10 pt-20 sm:px-6 lg:px-8">
+    <footer className="bg-[#eef2f3] px-6 font-sans text-[#46525e] lg:px-12">
+      <div className="mx-auto w-full max-w-[1440px] pb-10 pt-20">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-5 lg:gap-16">
           <div className="lg:col-span-2">
-            <p className="text-3xl font-semibold tracking-tight text-[#1f2a37]">
-              Doable
-            </p>
+            <Link href="/" className="inline-flex items-center gap-3">
+              <Image
+                src="/images/doable-logo-transparent-2048.png"
+                alt="Doable Logo"
+                width={32}
+                height={32}
+                className="h-8 w-8 object-contain"
+              />
+              <span className="text-3xl font-semibold tracking-tight text-[#1f2a37]">
+                Doable
+              </span>
+            </Link>
             <p className="mt-4 text-xl font-medium text-[#22303d]">
               Turn ideas into daily action.
             </p>
@@ -72,20 +83,31 @@ export default function MarketingFooter() {
             >
               Start your free 7-day trial today
             </Link>
-            <p className="mt-4 text-sm text-[#5b6672]">support@doable.app</p>
 
             <div className="mt-8 flex flex-wrap gap-3">
+              {/* <Link
+                href="#"
+                className="opacity-90 transition-opacity duration-200 hover:opacity-100"
+              >
+                <Image
+                  src="/images/apple-app-store-badge.webp"
+                  alt="Download on the App Store"
+                  width={140}
+                  height={42}
+                  className="h-[42px] w-auto"
+                />
+              </Link> */}
               <Link
                 href="#"
-                className="inline-flex items-center justify-center rounded-xl bg-[#1f1f1f] px-5 py-3 text-sm font-medium text-white opacity-90 transition-opacity duration-200 hover:opacity-100"
+                className="opacity-90 transition-opacity duration-200 hover:opacity-100"
               >
-                App Store
-              </Link>
-              <Link
-                href="#"
-                className="inline-flex items-center justify-center rounded-xl bg-[#1f1f1f] px-5 py-3 text-sm font-medium text-white opacity-90 transition-opacity duration-200 hover:opacity-100"
-              >
-                Google Play
+                <Image
+                  src="/images/google-play-store-badge.webp"
+                  alt="Get it on Google Play"
+                  width={140}
+                  height={42}
+                  className="h-[42px] w-auto"
+                />
               </Link>
             </div>
           </div>
@@ -118,15 +140,19 @@ export default function MarketingFooter() {
                 Join thousands building better habits with Doable
               </h4>
               <div className="mt-4 flex flex-wrap gap-x-5 gap-y-3">
-                {socialLinks.map((social) => (
-                  <Link
-                    key={social.label}
-                    href={social.href}
-                    className="text-sm text-[#5b6672] opacity-80 transition-opacity duration-200 hover:opacity-100"
-                  >
-                    {social.label}
-                  </Link>
-                ))}
+                {socialLinks.map((social) => {
+                  const Icon = social.icon;
+                  return (
+                    <Link
+                      key={social.label}
+                      href={social.href}
+                      aria-label={social.label}
+                      className="text-[#101114] opacity-80 transition-opacity duration-200 hover:opacity-100"
+                    >
+                      <Icon className="h-6 w-6" />
+                    </Link>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -134,7 +160,11 @@ export default function MarketingFooter() {
 
         <div className="mt-14 border-t border-slate-300/80 pt-6">
           <div className="flex flex-col gap-3 text-sm text-[#5b6672] md:flex-row md:items-center md:justify-between">
-            <p>&copy; 2026 Doable Technologies Pvt Ltd &mdash; All rights reserved</p>
+            <div className="flex flex-col gap-1 md:flex-row md:items-center md:gap-4">
+              <p>&copy; Doable 2026 &mdash; All rights reserved</p>
+              <span className="hidden md:inline text-slate-300">|</span>
+              <a href="mailto:support@doable.app" className="hover:text-[#46525e] transition-colors">support@doable.app</a>
+            </div>
             <p className="opacity-90">
               <Link
                 href="#"

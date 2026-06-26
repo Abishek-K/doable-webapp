@@ -5,51 +5,51 @@ export type Review = {
 
 export const reviews: Review[] = [
   {
-    text: "I appreciate the consistent reminders to be kind and patient with myself as I learn and practice daily habits that are helping me find a calmer daily space.",
-    name: "Member on forming more helpful habits",
+    text: "I’ve tried other summary apps, but Doable is the only one that actually gets me to apply what I read. The actionable frameworks are easily worth the yearly subscription.",
+    name: "Michael T., US",
   },
   {
-    text: "Doable helped me step back from constant reactive thinking and focus on what actually matters in my day-to-day decisions.",
-    name: "Member on building clearer thinking",
+    text: "As a founder, I rarely have time for 300-page books. Doable distills the core strategies brilliantly, and the audio mode is a lifesaver during my commute.",
+    name: "Sarah Jenkins, UK",
   },
   {
-    text: "The frameworks are practical and easy to apply. I stopped collecting ideas and started turning them into actions.",
-    name: "Member on making ideas actionable",
+    text: "The progress tracking completely shifted my mindset. Instead of passively consuming content, I'm actively implementing one new habit every single week.",
+    name: "Raj Patel, India",
   },
   {
-    text: "I can finish a summary during a short break and still walk away with one concrete change to test the same day.",
-    name: "Member on learning with limited time",
+    text: "I used to hoard books without finishing them. Now, I listen to a summary during my lunch break and walk away with a concrete action plan for the afternoon.",
+    name: "Emma L., US",
   },
   {
-    text: "The audio summaries fit perfectly into my commute, and the written format helps me revisit key insights later.",
-    name: "Member on flexible learning",
+    text: "What sets this apart is the depth. It doesn't just give you a superficial overview; it breaks down the exact mental models so you can actually use them.",
+    name: "Lukas M., Germany",
   },
   {
-    text: "Doable gives me structure. I always know what to read next and what to apply this week.",
-    name: "Member on staying consistent",
+    text: "The subscription paid for itself in a week. I applied a negotiation tactic from one of the leadership summaries and finally closed a deal I was stuck on.",
+    name: "Priya S., India",
   },
   {
-    text: "The content is concise without feeling shallow. It saves time while still giving me useful depth.",
-    name: "Member on better focus",
+    text: "Finally, an app that focuses on execution rather than just reading. The categories help me find exactly what I need right now, whether it's productivity or managing stress.",
+    name: "David O., UK",
   },
   {
-    text: "I use it with my team to discuss one idea every week. It has improved how we communicate and prioritize.",
-    name: "Member on team growth",
+    text: "I've replaced my morning scrolling habit with 10 minutes of focused learning. The interface is distraction-free, and the insights are immediately applicable.",
+    name: "Elena R., Spain",
   },
   {
-    text: "I used to start books and never finish them. Now I actually complete summaries and track progress regularly.",
-    name: "Member on finishing what they start",
+    text: "Being able to revisit key takeaways and save my own action steps makes this my ultimate personal growth library. Unbelievable value.",
+    name: "James Carter, US",
   },
   {
-    text: "It feels like a personal learning system. Less noise, better insights, and clearer execution.",
-    name: "Member on daily execution",
+    text: "We use Doable for our team's weekly syncs. Discussing one core concept and applying it together has completely transformed our communication and culture.",
+    name: "Neha K., India",
   },
   {
-    text: "The app helped me replace passive scrolling with short focused learning sessions.",
-    name: "Member on healthier routines",
+    text: "I love that I can digest high-quality, practical advice in under 15 minutes. It’s the perfect companion for my daily walks, and it keeps me accountable.",
+    name: "Thomas W., UK",
   },
   {
-    text: "The categories make it easy to choose what I need right now, whether it is mindset, productivity, or leadership.",
-    name: "Member on personalized learning",
+    text: "This isn't just another reading app; it's a system for changing your behavior. I've seen more personal growth in two months using Doable than in years of reading full books.",
+    name: "Mark D., US",
   },
 ];
