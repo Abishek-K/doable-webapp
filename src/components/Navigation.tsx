@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 interface NavigationProps {
   showBackButton?: boolean;
@@ -10,16 +11,17 @@ interface NavigationProps {
 }
 
 const navLinks = [
-  { href: "/explore", label: "Explore", isActive: true },
-  { href: "/pricing", label: "Pricing", isActive: false },
-  { href: "/blogs", label: "Blogs", isActive: false },
-  { href: "/about", label: "About", isActive: false },
+  { href: "/explore", label: "Explore" },
+  { href: "/pricing", label: "Pricing" },
+  { href: "/blogs", label: "Blogs" },
+  { href: "/about", label: "About" },
 ] as const;
 
 export default function Navigation({
   showBackButton = false,
   isAuthenticated = false,
 }: NavigationProps) {
+  const pathname = usePathname();
   const rightTextLink = { href: "/login", label: "Log in" };
   void isAuthenticated;
 
@@ -93,19 +95,22 @@ export default function Navigation({
                 aria-label="Main navigation"
                 className="hidden items-center gap-8 lg:flex"
               >
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className={`text-base transition-colors hover:text-slate-900 ${
-                      link.isActive
-                        ? "font-medium text-slate-900"
-                        : "font-normal text-slate-700"
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
+                {navLinks.map((link) => {
+                  const isActive = pathname === link.href || pathname?.startsWith(`${link.href}/`);
+                  return (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className={`text-base transition-colors hover:text-slate-900 ${
+                        isActive
+                          ? "font-medium text-slate-900"
+                          : "font-normal text-slate-700"
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                  );
+                })}
               </nav>
             )}
           </div>
@@ -152,19 +157,22 @@ export default function Navigation({
 
                 <div className="absolute right-0 top-12 w-64 overflow-hidden rounded-2xl border border-slate-200 bg-white p-3 shadow-xl">
                   <nav aria-label="Mobile navigation" className="flex flex-col">
-                    {navLinks.map((link) => (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        className={`rounded-lg px-3 py-2.5 text-base transition-colors hover:bg-slate-50 ${
-                          link.isActive
-                            ? "font-semibold text-slate-900"
-                            : "font-medium text-slate-700"
-                        }`}
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
+                    {navLinks.map((link) => {
+                      const isActive = pathname === link.href || pathname?.startsWith(`${link.href}/`);
+                      return (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          className={`rounded-lg px-3 py-2.5 text-base transition-colors hover:bg-slate-50 ${
+                            isActive
+                              ? "font-semibold text-slate-900"
+                              : "font-medium text-slate-700"
+                          }`}
+                        >
+                          {link.label}
+                        </Link>
+                      );
+                    })}
                     <div className="my-2 h-px bg-slate-200" />
                     <Link
                       href={rightTextLink.href}

@@ -41,6 +41,19 @@ export type BookSummaryPage = {
   related: RelatedBook[];
   /** Uploaded cover (Firestore). When missing, header uses themed placeholder art. */
   coverUrl?: string | null;
+  seo?: {
+    slug?: string;
+    primaryKeyword?: string;
+    keywords?: string[];
+    metaTitle?: string;
+    metaDescription?: string;
+    ogTitle?: string;
+    ogDescription?: string;
+    h1?: string;
+    introParagraph?: string;
+    faqContent?: { question: string; answer: string }[];
+    structuredData?: string;
+  };
 };
 
 export const BOOK_SUMMARIES: Record<string, BookSummaryPage> = {

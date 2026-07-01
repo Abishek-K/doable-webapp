@@ -12,18 +12,16 @@ export default function BookSummaryHeader({ book }: BookSummaryHeaderProps) {
   return (
     <section className="px-4 pb-14 pt-10 sm:px-6 sm:pb-16 sm:pt-12 lg:px-8">
       <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:items-center lg:gap-14">
-        <div className="rounded-[48px] bg-[#F4EEE4] p-8 shadow-[0_20px_48px_rgba(90,70,50,0.12)] sm:p-10 lg:p-12">
+        <div className="relative aspect-[3/4] w-full max-w-sm mx-auto overflow-hidden rounded-[28px] shadow-[0_20px_48px_rgba(90,70,50,0.12)]">
           {book.coverUrl ? (
-            <div className="relative flex h-full min-h-[320px] w-full items-center justify-center sm:min-h-[380px] lg:min-h-[440px]">
-              <Image
-                src={book.coverUrl}
-                alt={book.title}
-                fill
-                className="object-contain"
-                sizes="(max-width: 1024px) 100vw, 440px"
-                priority
-              />
-            </div>
+            <Image
+              src={book.coverUrl}
+              alt={book.title}
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 440px"
+              priority
+            />
           ) : (
             <DieEmptyCoverArt />
           )}

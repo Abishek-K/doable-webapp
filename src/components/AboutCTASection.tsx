@@ -5,10 +5,10 @@ export default function AboutCTASection() {
     <section className="bg-white px-4 pb-16 font-sans sm:px-6 sm:pb-20 lg:px-8">
       <div className="mx-auto w-full max-w-6xl">
         <div
-          className="relative overflow-hidden rounded-[36px] px-8 py-14 shadow-[0_20px_50px_-12px_rgba(150,75,0,0.35)] sm:px-12 sm:py-16 md:px-16"
+          className="relative overflow-hidden rounded-[36px] px-8 py-14 shadow-[0_20px_50px_-12px_rgba(26,115,232,0.35)] sm:px-12 sm:py-16 md:px-16"
           style={{
             background:
-              "linear-gradient(to right, #964B00 0%, #c76d38 45%, #F09460 100%)",
+              "linear-gradient(to right, #1a73e8 0%, #1765cc 100%)",
           }}
         >
           {/* Subtle smoke / depth overlay */}
@@ -34,7 +34,7 @@ export default function AboutCTASection() {
             </p>
             <Link
               href="/signup"
-              className="mt-8 inline-flex items-center justify-center rounded-full bg-[#fdf8f3] px-10 py-3.5 text-base font-bold text-[#964B00] transition-colors hover:bg-white"
+              className="mt-8 inline-flex items-center justify-center rounded-full bg-white px-10 py-3.5 text-base font-bold text-[#1a1a1a] transition-colors hover:bg-[#f4c400]"
             >
               Get Started Free
             </Link>

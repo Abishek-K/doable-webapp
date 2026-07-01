@@ -16,22 +16,18 @@ export default function ExploreBookGridCard({ book }: ExploreBookGridCardProps) 
     >
     <article className="flex flex-col">
       <div
-        className={`relative aspect-[3/4] w-full overflow-hidden rounded-[28px] ${book.cardBgClass} shadow-[0_12px_40px_rgba(15,23,42,0.12)]`}
+        className={`relative aspect-[3/4] w-full overflow-hidden rounded-[28px] shadow-[0_12px_40px_rgba(15,23,42,0.12)]`}
       >
         <span className="absolute right-4 top-4 z-10 rounded-full bg-[#e8e8e8] px-3 py-1 text-xs font-semibold uppercase tracking-wide text-[#374151]">
           {book.readMinutes} MIN
         </span>
-        <div className="absolute inset-0 flex items-center justify-center p-8 pt-14">
-          <div className="relative aspect-[2/3] w-[48%] max-w-[132px] drop-shadow-[0_16px_28px_rgba(0,0,0,0.45)]">
-            <Image
-              src={book.coverSrc}
-              alt={book.title}
-              fill
-              sizes="(max-width: 768px) 40vw, 160px"
-              className="object-contain"
-            />
-          </div>
-        </div>
+        <Image
+          src={book.coverSrc}
+          alt={book.title}
+          fill
+          sizes="(max-width: 768px) 40vw, 160px"
+          className="object-cover"
+        />
       </div>
       <div className="mt-5 px-0.5">
         <p

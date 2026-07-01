@@ -80,7 +80,8 @@ export function firestoreBookToExploreBook(
     author: string;
     coverUrl: string;
     categories: string[];
-    readTime: number;
+    readTime?: number;
+    summaryCount?: number;
     createdAt?: { toDate?: () => Date };
   },
   description: string
@@ -100,8 +101,8 @@ export function firestoreBookToExploreBook(
     id: slug,
     title: data.title,
     author: data.author,
-    description: description || `Read this summary in ${data.readTime} minutes.`,
-    readMinutes: data.readTime,
+    description: description || `Read this summary in ${data.readTime || 10} minutes.`,
+    readMinutes: data.readTime || Math.ceil((data.summaryCount || 10) * 1.2),
     topics: topics.length > 0 ? topics : ["Productivity"],
     categoryLabel,
     categoryLabelClass: palette.categoryLabelClass,

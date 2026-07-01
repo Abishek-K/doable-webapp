@@ -2,44 +2,37 @@
 import Navigation from '@/components/Navigation'
 import Link from 'next/link'
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
-import { signInWithEmailAndPassword } from 'firebase/auth'
+import { sendPasswordResetEmail } from 'firebase/auth'
 import { auth } from '@/firebase/config'
 import { Button } from "@/components/ui/button"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Flame, ArrowLeft } from 'lucide-react'
 
-export default function LoginPage() {
+export default function ForgotPasswordPage() {
   const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const router = useRouter()
+  const [successMsg, setSuccessMsg] = useState<string | null>(null)
 
-  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleReset = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsLoading(true)
     setError(null)
-    
-    if (!email || !password) {
-      setError("Please enter both email and password.")
+    setSuccessMsg(null)
+
+    if (!email) {
+      setError("Please enter your email address.")
       setIsLoading(false)
       return
     }
 
     try {
-      await signInWithEmailAndPassword(auth, email, password)
-      router.push("/dashboard")
+      await sendPasswordResetEmail(auth, email)
+      setSuccessMsg("If an account exists with that email, a password reset link has been sent.")
     } catch (err: any) {
-      console.error('Error signing in', err)
-      if (err.code === 'auth/invalid-credential' || err.code === 'auth/user-not-found' || err.code === 'auth/wrong-password') {
-        setError("Invalid email or password. Please try again.")
-      } else {
-        setError("Failed to sign in. Please try again later.")
-      }
+      console.error('Error sending reset email', err)
+      setError("Failed to send reset email. Please try again.")
     } finally {
       setIsLoading(false)
     }
@@ -51,11 +44,11 @@ export default function LoginPage() {
       {/* Main content */}
       <main className="flex-grow flex items-center justify-center px-4 py-12">
         <Card className="w-full max-w-md bg-white border border-[#e4e7ea] shadow-sm rounded-3xl">
-          <form onSubmit={handleLogin}>
+          <form onSubmit={handleReset}>
             <CardHeader className="space-y-2 pt-8">
-              <CardTitle className="text-2xl font-bold text-center">Log in to your account</CardTitle>
+              <CardTitle className="text-2xl font-bold text-center">Reset your password</CardTitle>
               <CardDescription className="text-center text-[#5a5a5a]">
-                Enter your email and password to access your account
+                Enter your email address and we'll send you a link to reset your password.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-5 mt-4">
@@ -64,41 +57,34 @@ export default function LoginPage() {
                   {error}
                 </div>
               )}
+              {successMsg && (
+                <div className="p-3 text-sm text-green-700 bg-green-50 border border-green-200 rounded-xl">
+                  {successMsg}
+                </div>
+              )}
               <div className="space-y-2">
                 <Label htmlFor="email" className="font-semibold text-[#2b2b2b]">Email</Label>
-                <Input onChange={(e) => setEmail(e.target.value)} id="email" type="email" placeholder="name@example.com" className="bg-white border-[#e4e7ea] focus:border-[#1a73e8] focus:ring-[#1a73e8]/20 rounded-xl h-12" />
-              </div>
-              <div className="space-y-2">
-                <div className="flex items-center justify-between">
-                  <Label htmlFor="password" className="font-semibold text-[#2b2b2b]">Password</Label>
-                  <Link href="/forgot-password" className="text-sm font-semibold text-[#1a73e8] hover:underline">
-                    Forgot password?
-                  </Link>
-                </div>
-                <Input onChange={(e) => setPassword(e.target.value)} id="password" type="password" className="bg-white border-[#e4e7ea] focus:border-[#1a73e8] focus:ring-[#1a73e8]/20 rounded-xl h-12" />
-              </div>
-              <div className="flex items-center space-x-2 mt-2">
-                <Checkbox id="remember" className="border-[#e4e7ea] data-[state=checked]:bg-[#1a73e8]" />
-                <label
-                  htmlFor="remember"
-                  className="text-sm font-medium leading-none text-[#5a5a5a] cursor-pointer"
-                >
-                  Remember me
-                </label>
+                <Input 
+                  onChange={(e) => setEmail(e.target.value)} 
+                  id="email" 
+                  type="email" 
+                  placeholder="name@example.com" 
+                  className="bg-white border-[#e4e7ea] focus:border-[#1a73e8] focus:ring-[#1a73e8]/20 rounded-xl h-12" 
+                />
               </div>
             </CardContent>
             <CardFooter className="flex flex-col space-y-4 pb-8">
               <Button 
                 type="submit" 
                 disabled={isLoading}
-                className="w-full bg-[#f4c400] text-[#1a1a1a] hover:bg-[#e0b400] rounded-full h-12 font-semibold shadow-md transition-all"
+                className="w-full bg-[#1a73e8] text-white hover:bg-[#1765cc] rounded-full h-12 font-semibold shadow-md transition-all"
               >
-                {isLoading ? "Logging In..." : "Log In"}
+                {isLoading ? "Sending..." : "Send reset link"}
               </Button>
               <p className="text-sm text-center text-[#5a5a5a]">
-                Don't have an account?{" "}
-                <Link href="/signup" className="text-[#1a73e8] font-semibold hover:underline">
-                  Sign up
+                Remembered your password?{" "}
+                <Link href="/login" className="text-[#1a73e8] font-semibold hover:underline">
+                  Log in
                 </Link>
               </p>
             </CardFooter>

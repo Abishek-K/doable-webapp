@@ -125,10 +125,10 @@ export default function PricingSection() {
 
           {/* Savings Badge */}
           <div className="flex items-center gap-2">
-            <span className="text-sm font-medium text-teal-600 flex items-center gap-1">
+            <span className="text-sm font-medium text-[#1a73e8] flex items-center gap-1">
               ↙ Save 40% with Yearly Billing
             </span>
-            <span className="inline-block rounded-full bg-teal-100 px-3 py-1 text-xs font-bold text-teal-600">
+            <span className="inline-block rounded-full bg-[#e8f0fe] px-3 py-1 text-xs font-bold text-[#1a73e8]">
               BEST VALUE
             </span>
           </div>
@@ -141,14 +141,14 @@ export default function PricingSection() {
               key={index}
               className={`relative rounded-2xl px-6 py-7 transition-all ${
                 plan.isPopular
-                  ? "border-2 border-orange-300 bg-orange-50 shadow-lg"
+                  ? "border-2 border-[#f4c400] bg-[#fff8d6] shadow-lg"
                   : "border border-slate-200 bg-white"
               }`}
             >
               {/* Badge */}
               {plan.badge && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 transform">
-                  <span className="inline-block rounded-full bg-amber-700 px-4 py-1 text-xs font-bold text-white">
+                  <span className="inline-block rounded-full bg-[#1a1a1a] px-4 py-1 text-xs font-bold text-white">
                     {plan.badge}
                   </span>
                 </div>
@@ -156,20 +156,20 @@ export default function PricingSection() {
 
               {/* Plan Header */}
               <div className={`${plan.isPopular ? "pt-1" : ""}`}>
-                <h3 className="text-xl font-bold text-slate-900">
+                <h3 className="text-xl font-bold text-[#1a1a1a]">
                   {plan.name}
                 </h3>
-                <p className="mt-1 text-sm text-teal-600">
+                <p className="mt-1 text-sm text-[#1a73e8]">
                   {plan.description}
                 </p>
               </div>
 
               {/* Price */}
               <div className="mt-4 flex items-baseline gap-1">
-                <span className="text-4xl font-bold text-slate-900">
+                <span className="text-4xl font-bold text-[#1a1a1a]">
                   ${plan.price}
                 </span>
-                <span className="text-sm text-orange-700 font-medium">{plan.period}</span>
+                <span className="text-sm text-[#a38200] font-medium">{plan.period}</span>
               </div>
 
               {/* Features List */}
@@ -180,8 +180,8 @@ export default function PricingSection() {
                     className="flex items-start gap-2.5"
                   >
                     {feature.included ? (
-                      <div className="flex-shrink-0 mt-0.5 flex items-center justify-center h-5 w-5 rounded-full border-2 border-teal-500 bg-teal-50">
-                        <Check className="h-3 w-3 text-teal-600 font-bold" />
+                      <div className="flex-shrink-0 mt-0.5 flex items-center justify-center h-5 w-5 rounded-full border-2 border-[#1a73e8] bg-[#e8f0fe]">
+                        <Check className="h-3 w-3 text-[#1a73e8] font-bold" />
                       </div>
                     ) : (
                       <div className="flex-shrink-0 mt-0.5 flex items-center justify-center h-5 w-5 rounded-full border-2 border-slate-300 relative">

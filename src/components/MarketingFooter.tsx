@@ -23,16 +23,16 @@ const footerColumns: FooterColumn[] = [
     links: [
       { label: "Blog", href: "/blogs" },
       { label: "FAQ", href: "#faq" },
-      { label: "Help center", href: "#" },
-      { label: "Contact support", href: "mailto:support@doable.app" },
+      { label: "Help center", href: "mailto:hustlemindsco@gmail.com" },
+      { label: "Contact support", href: "mailto:hustlemindsco@gmail.com" },
     ],
   },
   {
     title: "Company",
     links: [
       { label: "About Doable", href: "/about" },
-      { label: "Careers", href: "#" },
-      { label: "Affiliate program", href: "#" },
+      { label: "Careers", href: "mailto:hustlemindsco@gmail.com" },
+      { label: "Affiliate program", href: "mailto:hustlemindsco@gmail.com" },
     ],
   },
   {
@@ -47,9 +47,9 @@ const footerColumns: FooterColumn[] = [
 ];
 
 const socialLinks = [
-  { label: "Twitter / X", href: "#", icon: Twitter },
-  { label: "LinkedIn", href: "#", icon: Linkedin },
-  { label: "Instagram", href: "#", icon: Instagram },
+  { label: "Twitter / X", href: "https://twitter.com", icon: Twitter },
+  { label: "LinkedIn", href: "https://linkedin.com", icon: Linkedin },
+  { label: "Instagram", href: "https://instagram.com", icon: Instagram },
 ];
 
 export default function MarketingFooter() {
@@ -86,7 +86,7 @@ export default function MarketingFooter() {
 
             <div className="mt-8 flex flex-wrap gap-3">
               {/* <Link
-                href="#"
+                href="/"
                 className="opacity-90 transition-opacity duration-200 hover:opacity-100"
               >
                 <Image
@@ -98,7 +98,7 @@ export default function MarketingFooter() {
                 />
               </Link> */}
               <Link
-                href="#"
+                href="/"
                 className="opacity-90 transition-opacity duration-200 hover:opacity-100"
               >
                 <Image
@@ -163,25 +163,25 @@ export default function MarketingFooter() {
             <div className="flex flex-col gap-1 md:flex-row md:items-center md:gap-4">
               <p>&copy; Doable 2026 &mdash; All rights reserved</p>
               <span className="hidden md:inline text-slate-300">|</span>
-              <a href="mailto:support@doable.app" className="hover:text-[#46525e] transition-colors">support@doable.app</a>
+              <a href="mailto:hustlemindsco@gmail.com" className="hover:text-[#46525e] transition-colors">hustlemindsco@gmail.com</a>
             </div>
             <p className="opacity-90">
               <Link
-                href="#"
+                href="/"
                 className="transition-opacity duration-200 hover:opacity-100"
               >
                 Sitemap
               </Link>{" "}
               |{" "}
               <Link
-                href="#"
+                href="/legal-notice"
                 className="transition-opacity duration-200 hover:opacity-100"
               >
                 Legal Notice
               </Link>{" "}
               |{" "}
               <Link
-                href="#"
+                href="/accessibility"
                 className="transition-opacity duration-200 hover:opacity-100"
               >
                 Accessibility

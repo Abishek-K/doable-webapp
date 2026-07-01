@@ -21,19 +21,15 @@ export default function RelatedBooksSection({ books }: RelatedBooksSectionProps)
               className="group block focus:outline-none focus-visible:ring-2 focus-visible:ring-[#136058] focus-visible:ring-offset-2"
             >
               <div
-                className={`relative aspect-[4/5] w-full overflow-hidden rounded-3xl ${b.cardBgClass} shadow-sm ring-1 ring-black/[0.05]`}
+                className={`relative aspect-[3/4] w-full overflow-hidden rounded-[28px] shadow-[0_12px_40px_rgba(15,23,42,0.12)]`}
               >
-                <div className="absolute inset-0 flex items-center justify-center p-8 pt-10">
-                  <div className="relative aspect-[2/3] w-[44%] max-w-[120px] drop-shadow-[0_12px_24px_rgba(0,0,0,0.35)]">
-                    <Image
-                      src={b.coverSrc}
-                      alt={b.title}
-                      fill
-                      className="object-contain"
-                      sizes="120px"
-                    />
-                  </div>
-                </div>
+                <Image
+                  src={b.coverSrc}
+                  alt={b.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 30vw"
+                />
               </div>
               <h3 className="mt-4 text-lg font-bold text-black group-hover:underline">
                 {b.title}

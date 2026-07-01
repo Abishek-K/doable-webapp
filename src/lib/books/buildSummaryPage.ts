@@ -131,6 +131,7 @@ function mergeWithStaticFallback(
     progressExploredInitial:
       built.progressExploredInitial ?? fallback.progressExploredInitial,
     coverUrl: built.coverUrl ?? fallback.coverUrl,
+    seo: built.seo ?? fallback.seo,
   };
 }
 
@@ -190,7 +191,7 @@ export function buildBookSummaryPageFromFirestore(
     title: book.title,
     author: book.author,
     categoryLabel,
-    readMinutes: book.readTime,
+    readMinutes: book.readTime || Math.ceil((book.summaryCount || 10) * 1.2),
     description,
     progressExploredInitial: 12,
     insights,
@@ -201,6 +202,7 @@ export function buildBookSummaryPageFromFirestore(
     featuredImageAlt: `${book.title} cover`,
     related,
     coverUrl: book.coverUrl,
+    seo: book.seo,
   };
 
   return mergeWithStaticFallback(slug, built);

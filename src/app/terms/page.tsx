@@ -1,165 +1,87 @@
 import type { Metadata } from 'next';
-import { CheckCircleIcon, ShieldCheckIcon, FileTextIcon, MailIcon } from 'lucide-react';
+import React from 'react';
+import { PolicyLayout } from '@/app/(policy)/components/PolicyLayout';
+import { PolicySection } from '@/app/(policy)/components/PolicySection';
+import { PolicyHeading } from '@/app/(policy)/components/PolicyHeading';
+import { PolicyText } from '@/app/(policy)/components/PolicyText';
+import { PolicyList } from '@/app/(policy)/components/PolicyList';
 
 export const metadata: Metadata = {
   title: "Terms of Service — Doable",
-  description:
-    "Read Doable's Terms of Service to understand the rules and guidelines for using our platform.",
+  description: "Read Doable's Terms of Service to understand the rules and guidelines for using our platform.",
   robots: { index: true, follow: false },
 };
 
-const LegalPage = () => {
+export default function TermsOfServicePage() {
   return (
-    <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-      {/* Header Section */}
-      <div className="text-center">
-        <p className="inline-flex items-center rounded-full bg-orange-100 px-4 py-1 text-sm font-semibold text-orange-800 tracking-wide">
-          LEGAL DOCUMENTATION
-        </p>
-        <h1 className="mt-6 text-4xl sm:text-5xl font-bold tracking-tight text-gray-900">
-          Trust & Transparency.
-        </h1>
-        <p className="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
-          We believe in keeping things clear and doable. Here is everything you need to know about how we handle your data and our mutual commitments.
-        </p>
-      </div>
+    <PolicyLayout title="Terms of Service" subtitle="Please read these terms carefully before using Doable.">
+      <PolicySection>
+        <PolicyText className="text-sm text-gray-500 font-medium">Last updated: July 1, 2026</PolicyText>
+      </PolicySection>
 
-      {/* Policy Links */}
-      <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
-        <div className="bg-gray-50/80 rounded-2xl p-6 flex items-center justify-between transition hover:bg-gray-100/70">
-          <div>
-            <h2 className="font-semibold text-gray-900 flex items-center">
-              <ShieldCheckIcon className="w-5 h-5 mr-2 text-gray-400" />
-              Privacy Policy
-            </h2>
-            <p className="text-sm text-gray-500 mt-1">Last updated October 24, 2023</p>
-          </div>
-          <div className="text-gray-300 opacity-60">
-            <ShieldCheckIcon className="w-16 h-16" strokeWidth={1} />
-          </div>
-        </div>
-        <div className="bg-gray-50/80 rounded-2xl p-6 flex items-center justify-between transition hover:bg-gray-100/70">
-          <div>
-            <h2 className="font-semibold text-gray-900 flex items-center">
-              <FileTextIcon className="w-5 h-5 mr-2 text-gray-400" />
-              Terms of Service
-            </h2>
-            <p className="text-sm text-gray-500 mt-1">Last updated October 24, 2023</p>
-          </div>
-          <div className="text-gray-300 opacity-60">
-              <FileTextIcon className="w-16 h-16" strokeWidth={1} />
-          </div>
-        </div>
-      </div>
+      <PolicySection>
+        <PolicyHeading level={2}>1. Acceptance of Terms</PolicyHeading>
+        <PolicyText>
+          By accessing or using the Doable web application and services ("Service"), you agree to be bound by these Terms of Service. If you disagree with any part of the terms, you may not access the Service.
+        </PolicyText>
+      </PolicySection>
 
-      {/* Privacy Policy Section */}
-      <div id="privacy-policy" className="mt-20 sm:mt-24">
-        <h2 className="text-3xl font-bold tracking-tight text-gray-900">Privacy Policy</h2>
-        
-        <div className="mt-8 space-y-8">
-          <div>
-            <h3 className="text-xl font-semibold text-gray-900">1. Information We Collect</h3>
-            <p className="mt-3 text-base text-gray-700 leading-relaxed">
-              At Doable, your privacy is a priority. We collect information that you provide directly to us when you create an account, such as your name, email address, and learning preferences. We also collect technical data including your IP address and device information to improve our platform's performance.
-            </p>
-            <div className="mt-4 bg-blue-50/70 border-l-4 border-blue-300 p-4 rounded-r-lg">
-              <p className="text-sm text-blue-800">
-                <span className="font-semibold">Key Takeaway:</span> We only collect what is necessary to give you a personalized learning experience.
-              </p>
-            </div>
-          </div>
+      <PolicySection>
+        <PolicyHeading level={2}>2. Description of Service</PolicyHeading>
+        <PolicyText>
+          Doable provides concise, actionable summaries of non-fiction books and related content. 
+          <strong> Note on Content Creation:</strong> Our book summaries and action plans are prepared using a combination of advanced artificial intelligence and human editorial intervention. While AI assists in analyzing and structuring the text, human editors review, refine, and validate the insights to ensure high quality, accuracy, and practical applicability.
+        </PolicyText>
+      </PolicySection>
 
-          <div>
-            <h3 className="text-xl font-semibold text-gray-900">2. How We Use Your Data</h3>
-            <ul className="mt-3 space-y-2 text-base text-gray-700">
-              <li className="flex items-start">
-                <CheckCircleIcon className="w-5 h-5 mr-3 mt-1 text-blue-500 flex-shrink-0" />
-                <span>To provide, maintain, and improve our learning services.</span>
-              </li>
-              <li className="flex items-start">
-                <CheckCircleIcon className="w-5 h-5 mr-3 mt-1 text-blue-500 flex-shrink-0" />
-                <span>To communicate with you about product updates and support.</span>
-              </li>
-              <li className="flex items-start">
-                <CheckCircleIcon className="w-5 h-5 mr-3 mt-1 text-blue-500 flex-shrink-0" />
-                <span>To personalize your curriculum based on progress metrics.</span>
-              </li>
-            </ul>
-          </div>
+      <PolicySection>
+        <PolicyHeading level={2}>3. Accounts and Subscriptions</PolicyHeading>
+        <PolicyList items={[
+          "You must provide accurate, complete, and current information when creating an account.",
+          "You are responsible for safeguarding the password and for all activities or actions under your password.",
+          "Doable offers premium subscriptions. Billing, cancellation, and refund rules are outlined in our Subscription & Refund Policy."
+        ]} />
+      </PolicySection>
 
-          <div>
-            <h3 className="text-xl font-semibold text-gray-900">3. Data Security</h3>
-            <p className="mt-3 text-base text-gray-700 leading-relaxed">
-              We implement a variety of security measures to maintain the safety of your personal information. Your data is encrypted at rest and in transit. We use industry-standard protocols to ensure that your learning journey remains private and secure.
-            </p>
-          </div>
-        </div>
-      </div>
+      <PolicySection>
+        <PolicyHeading level={2}>4. Intellectual Property Rights</PolicyHeading>
+        <PolicyText>
+          The Service and its original content, features, and functionality are and will remain the exclusive property of Doable and its licensors. Our summaries are transformative educational works. We are not affiliated with, nor endorsed by, the original authors or publishers of the books summarized. You may not reproduce, distribute, or create derivative works from our content without express written permission.
+        </PolicyText>
+      </PolicySection>
 
-      {/* Terms of Service Section */}
-      <div id="terms-of-service" className="mt-20 sm:mt-24">
-        <h2 className="text-3xl font-bold tracking-tight text-gray-900">Terms of Service</h2>
+      <PolicySection>
+        <PolicyHeading level={2}>5. User Conduct</PolicyHeading>
+        <PolicyText>
+          You agree not to use the Service:
+        </PolicyText>
+        <PolicyList items={[
+          "In any way that violates any applicable national or international law or regulation.",
+          "For the purpose of exploiting, harming, or attempting to exploit or harm others.",
+          "To copy, scrape, or systematically download our summaries for competing services or public redistribution.",
+        ]} />
+      </PolicySection>
 
-        <div className="mt-8 space-y-8">
-          <div>
-            <h3 className="text-xl font-semibold text-gray-900">1. Acceptance of Terms</h3>
-            <p className="mt-3 text-base text-gray-700 leading-relaxed">
-              By accessing or using Doable, you agree to be bound by these Terms of Service. If you do not agree to all of the terms and conditions, you may not access the platform. These terms apply to all visitors, users, and others who access the service.
-            </p>
-          </div>
+      <PolicySection>
+        <PolicyHeading level={2}>6. Disclaimer of Warranties</PolicyHeading>
+        <PolicyText>
+          The Service is provided on an "AS IS" and "AS AVAILABLE" basis. Doable makes no representations or warranties of any kind, express or implied, regarding the accuracy, adequacy, or completeness of the summaries. The content is for informational and educational purposes only and does not constitute professional advice.
+        </PolicyText>
+      </PolicySection>
 
-          <div>
-            <h3 className="text-xl font-semibold text-gray-900">2. User Conduct</h3>
-            <p className="mt-3 text-base text-gray-700 leading-relaxed">
-              We strive to maintain a respectful and productive learning environment. Users agree not to:
-            </p>
-            <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="bg-gray-50/80 rounded-xl p-6">
-                <h4 className="font-semibold text-gray-800">No Misuse</h4>
-                <p className="text-sm text-gray-600 mt-1">Attempt to gain unauthorized access to our systems or user accounts.</p>
-              </div>
-              <div className="bg-gray-50/80 rounded-xl p-6">
-                <h4 className="font-semibold text-gray-800">Respect IP</h4>
-                <p className="text-sm text-gray-600 mt-1">Copy, distribute, or create derivative works from our curriculum without consent.</p>
-              </div>
-            </div>
-          </div>
+      <PolicySection>
+        <PolicyHeading level={2}>7. Limitation of Liability</PolicyHeading>
+        <PolicyText>
+          In no event shall Doable, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use the Service.
+        </PolicyText>
+      </PolicySection>
 
-          <div>
-            <h3 className="text-xl font-semibold text-gray-900">3. Subscription & Payments</h3>
-            <p className="mt-3 text-base text-gray-700 leading-relaxed">
-              Some parts of the Service are billed on a subscription basis. You will be billed in advance on a recurring and periodic basis. Subscription cycles are set either on a monthly or annual basis, depending on the plan you select when purchasing a Subscription.
-            </p>
-          </div>
-
-          <div>
-            <h3 className="text-xl font-semibold text-gray-900">4. Limitation of Liability</h3>
-            <p className="mt-3 text-base text-gray-700 leading-relaxed">
-              In no event shall Doable, nor its directors, employees, or partners, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Contact CTA */}
-      <div className="mt-20 sm:mt-24 bg-orange-50/70 rounded-2xl p-8 sm:p-12 text-center">
-          <MailIcon className="w-8 h-8 mx-auto text-orange-600" />
-          <h2 className="mt-4 text-2xl font-bold text-gray-900">
-              Still have questions?
-          </h2>
-          <p className="mt-2 text-base text-gray-700 max-w-md mx-auto">
-              Our legal and support teams are here to help you understand how Doable works for you.
-          </p>
-          <a
-              href="mailto:legal@doable.com"
-              className="mt-6 inline-flex items-center justify-center rounded-lg bg-orange-900 px-6 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-orange-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-900"
-          >
-              Email Legal Team
-          </a>
-      </div>
-
-    </main>
+      <PolicySection>
+        <PolicyHeading level={2}>8. Contact Us</PolicyHeading>
+        <PolicyText>
+          If you have any questions about these Terms, please contact us at: <strong>hustlemindsco@gmail.com</strong>.
+        </PolicyText>
+      </PolicySection>
+    </PolicyLayout>
   );
-};
-
-export default LegalPage;
+}

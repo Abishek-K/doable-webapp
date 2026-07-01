@@ -1,56 +1,57 @@
 import type { Metadata } from 'next';
 import React from 'react';
 import { PolicyLayout } from '@/app/(policy)/components/PolicyLayout';
-
-export const metadata: Metadata = {
-  title: "Cookie Policy — Doable",
-  description:
-    "Learn how Doable uses cookies to improve your experience and how you can manage your cookie preferences.",
-  robots: { index: true, follow: false },
-};
 import { PolicySection } from '@/app/(policy)/components/PolicySection';
 import { PolicyHeading } from '@/app/(policy)/components/PolicyHeading';
 import { PolicyText } from '@/app/(policy)/components/PolicyText';
 import { PolicyList } from '@/app/(policy)/components/PolicyList';
 
-const CookiePolicyPage = () => {
+export const metadata: Metadata = {
+  title: "Cookie Policy — Doable",
+  description: "Learn how Doable uses cookies to improve your experience.",
+  robots: { index: true, follow: false },
+};
+
+export default function CookiePolicyPage() {
   return (
-    <PolicyLayout>
+    <PolicyLayout title="Cookie Policy" subtitle="Understanding how we use cookies and tracking technologies.">
       <PolicySection>
-        <PolicyHeading level={1}>Cookie Policy</PolicyHeading>
-        <PolicyText className="text-sm text-gray-500">Last updated: January 1, 2024</PolicyText>
+        <PolicyText className="text-sm text-gray-500 font-medium">Last updated: July 1, 2026</PolicyText>
       </PolicySection>
 
       <PolicySection>
         <PolicyHeading level={2}>1. What Are Cookies?</PolicyHeading>
         <PolicyText>
-          Cookies are small text files stored on your device when you visit a website. They are used to remember your preferences and improve your user experience.
+          Cookies are small text files stored on your device when you visit a website. They are widely used to make websites work more efficiently and to provide information to the owners of the site.
         </PolicyText>
       </PolicySection>
 
       <PolicySection>
         <PolicyHeading level={2}>2. How We Use Cookies</PolicyHeading>
         <PolicyText>
-          We use cookies for several purposes, including:
+          We use cookies and similar tracking technologies to track the activity on our Service and hold certain information. The cookies we use fall into the following categories:
         </PolicyText>
-        <PolicyList 
-          items={[
-            "To provide and operate the service.",
-            "To understand and save your preferences for future visits.",
-            "To compile aggregate data about site traffic and interactions."
-          ]}
-        />
+        <PolicyList items={[
+          "Essential Cookies: Required for the operation of the Service, such as enabling you to log into secure areas.",
+          "Preference Cookies: Allow us to remember choices you make (like your language or region).",
+          "Analytics Cookies: Help us understand how visitors interact with our platform by reporting information anonymously.",
+          "Marketing Cookies: Used to deliver relevant advertisements and track ad campaign performance."
+        ]} />
       </PolicySection>
 
       <PolicySection>
-        <PolicyHeading level={2}>3. Your Choices</PolicyHeading>
+        <PolicyHeading level={2}>3. Managing Cookies</PolicyHeading>
         <PolicyText>
-          You can choose to disable cookies through your browser settings. However, this may affect your ability to use certain features of the service.
+          You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Service properly.
         </PolicyText>
       </PolicySection>
 
+      <PolicySection>
+        <PolicyHeading level={2}>4. Contact Us</PolicyHeading>
+        <PolicyText>
+          For more information about our use of cookies, please contact us at: <strong>hustlemindsco@gmail.com</strong>.
+        </PolicyText>
+      </PolicySection>
     </PolicyLayout>
   );
-};
-
-export default CookiePolicyPage;
+}

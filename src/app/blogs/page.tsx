@@ -44,29 +44,29 @@ export default async function BlogsPage({ searchParams }: BlogsPageProps) {
       <Navigation />
       <main className="pb-20">
         {/* ── Hero Section ─────────────────────────────────── */}
-        <section className="bg-[#faf9f7] px-4 pb-16 pt-10 sm:px-6 lg:px-8">
+        <section className="bg-[#f7f5f2] px-4 pb-16 pt-10 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-7xl">
             {/* Header row */}
             <div className="grid gap-10 lg:grid-cols-[1.4fr_0.8fr] lg:items-end">
               {/* Left — hero copy */}
               <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-blue-600">
+                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#1a73e8]">
                   The Doable Blog
                 </p>
-                <h1 className="mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl lg:text-[3.4rem] lg:leading-[1.08]">
+                <h1 className="mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-[#1a1a1a] sm:text-5xl lg:text-[3.4rem] lg:leading-[1.08]">
                   Insightful reads for
                   <br />
                   focused minds.
                 </h1>
-                <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
+                <p className="mt-6 max-w-2xl text-lg leading-8 text-[#5a5a5a]">
                   Strategies, stories and frameworks to help you master
                   your craft with half the frustration.
                 </p>
               </div>
 
               {/* Right — category filter card */}
-              <div className="rounded-2xl border border-slate-200 bg-white p-7 shadow-sm">
-                <p className="text-sm font-semibold text-slate-900">
+              <div className="rounded-2xl border border-[#e4e7ea] bg-white p-7 shadow-sm">
+                <p className="text-sm font-semibold text-[#1a1a1a]">
                   Explore topics that matter to you
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
@@ -74,8 +74,8 @@ export default async function BlogsPage({ searchParams }: BlogsPageProps) {
                     href="/blogs"
                     className={`rounded-full border px-4 py-2 text-sm font-medium transition ${
                       !activeCategory
-                        ? "border-slate-900 bg-slate-900 text-white"
-                        : "border-slate-200 bg-white text-slate-600 hover:border-slate-400"
+                        ? "border-[#1a1a1a] bg-[#1a1a1a] text-white"
+                        : "border-[#e4e7ea] bg-white text-[#5a5a5a] hover:border-[#1a1a1a]"
                     }`}
                   >
                     All
@@ -89,8 +89,8 @@ export default async function BlogsPage({ searchParams }: BlogsPageProps) {
                         href={`/blogs?category=${encodeURIComponent(category)}`}
                         className={`rounded-full border px-4 py-2 text-sm font-medium transition ${
                           isActive
-                            ? "border-slate-900 bg-slate-900 text-white"
-                            : "border-slate-200 bg-white text-slate-600 hover:border-slate-400"
+                            ? "border-[#1a1a1a] bg-[#1a1a1a] text-white"
+                            : "border-[#e4e7ea] bg-white text-[#5a5a5a] hover:border-[#1a1a1a]"
                         }`}
                       >
                         {category}
@@ -121,23 +121,23 @@ export default async function BlogsPage({ searchParams }: BlogsPageProps) {
                   </div>
                   <div className="flex flex-col justify-center p-8 lg:p-12">
                     <div className="flex items-center gap-3">
-                      <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-600">
+                      <span className="rounded-full bg-[#e8f0fe] px-3 py-1 text-xs font-semibold text-[#1a73e8]">
                         {heroPost.category}
                       </span>
-                      <span className="text-xs text-slate-400">
+                      <span className="text-xs text-[#5a5a5a]">
                         {new Date(heroPost.publishedAt).toLocaleDateString(
                           "en-US",
                           { month: "short", day: "numeric", year: "numeric" }
                         )}
                       </span>
                     </div>
-                    <h2 className="mt-4 text-2xl font-semibold leading-snug text-slate-900 sm:text-3xl lg:text-4xl">
+                    <h2 className="mt-4 text-2xl font-semibold leading-snug text-[#1a1a1a] sm:text-3xl lg:text-4xl">
                       {heroPost.title}
                     </h2>
-                    <p className="mt-4 line-clamp-3 text-base leading-relaxed text-slate-500">
+                    <p className="mt-4 line-clamp-3 text-base leading-relaxed text-[#5a5a5a]">
                       {heroPost.excerpt}
                     </p>
-                    <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-slate-800 transition-colors group-hover:text-blue-600">
+                    <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#2b2b2b] transition-colors group-hover:text-[#1a73e8]">
                       Read Story
                       <svg
                         className="h-4 w-4 transition-transform group-hover:translate-x-1"
@@ -167,10 +167,10 @@ export default async function BlogsPage({ searchParams }: BlogsPageProps) {
               <>
                 <div className="flex items-end justify-between">
                   <div>
-                    <h2 className="text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
+                    <h2 className="text-2xl font-semibold tracking-tight text-[#1a1a1a] sm:text-3xl">
                       Recent Articles
                     </h2>
-                    <p className="mt-2 text-sm text-slate-500">
+                    <p className="mt-2 text-sm text-[#5a5a5a]">
                       The latest from the Doable blog
                     </p>
                   </div>
@@ -192,11 +192,11 @@ export default async function BlogsPage({ searchParams }: BlogsPageProps) {
 
                   {/* CTA card — show only when there are enough posts */}
                   {recentPosts.length >= 3 && (
-                    <div className="flex flex-col items-center justify-center rounded-2xl border border-amber-200 bg-[#fef9ef] p-8 text-center">
-                      <h3 className="text-xl font-semibold text-slate-900">
+                    <div className="flex flex-col items-center justify-center rounded-2xl border border-[#f4c400] bg-[#fff8d6] p-8 text-center">
+                      <h3 className="text-xl font-semibold text-[#1a1a1a]">
                         Want personalized learning paths?
                       </h3>
-                      <p className="mt-3 text-sm leading-relaxed text-slate-500">
+                      <p className="mt-3 text-sm leading-relaxed text-[#5a5a5a]">
                         Get curated book summaries and action plans tailored to
                         your goals.
                       </p>

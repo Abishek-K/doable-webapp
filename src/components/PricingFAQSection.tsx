@@ -27,7 +27,7 @@ export default function PricingFAQSection() {
   return (
     <section className="bg-white px-4 py-12 font-sans sm:px-6 sm:py-14">
       <div className="mx-auto w-full max-w-[820px]">
-        <h2 className="text-center text-4xl font-semibold tracking-tight text-[#2b2b2b] sm:text-5xl">
+        <h2 className="text-center text-4xl font-semibold tracking-tight text-[#1a1a1a] sm:text-5xl">
           Frequently asked questions
         </h2>
 

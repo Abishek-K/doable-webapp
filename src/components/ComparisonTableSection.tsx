@@ -39,7 +39,7 @@ export default function ComparisonTableSection() {
     <section className="bg-white px-4 py-16 font-sans sm:px-6 sm:py-24 lg:px-8">
       <div className="mx-auto w-full max-w-4xl">
         {/* Heading */}
-        <h2 className="text-4xl font-bold text-slate-900 text-center mb-12">
+        <h2 className="text-4xl font-bold text-[#1a1a1a] text-center mb-12">
           Compare the plans
         </h2>
 
@@ -50,13 +50,13 @@ export default function ComparisonTableSection() {
             {/* Table Header */}
             <thead>
               <tr className="bg-slate-100">
-                <th className="px-6 py-4 text-left font-semibold text-slate-900">
+                <th className="px-6 py-4 text-left font-semibold text-[#1a1a1a]">
                   Feature
                 </th>
-                <th className="px-6 py-4 text-center font-semibold text-slate-900">
+                <th className="px-6 py-4 text-center font-semibold text-[#1a1a1a]">
                   Free
                 </th>
-                <th className="px-6 py-4 text-center font-semibold text-amber-700">
+                <th className="px-6 py-4 text-center font-semibold text-[#1a73e8]">
                   Premium
                 </th>
               </tr>
@@ -67,7 +67,7 @@ export default function ComparisonTableSection() {
               {features.map((feature, index) => (
                 <tr key={index} className="hover:bg-slate-50 transition-colors">
                   {/* Feature Name */}
-                  <td className="px-6 py-5 font-medium text-slate-700">
+                  <td className="px-6 py-5 font-medium text-[#2b2b2b]">
                     {feature.name}
                   </td>
 
@@ -75,12 +75,12 @@ export default function ComparisonTableSection() {
                   <td className="px-6 py-5 text-center">
                     {typeof feature.free === "boolean" ? (
                       feature.free ? (
-                        <Check className="h-5 w-5 text-amber-700 mx-auto" />
+                        <Check className="h-5 w-5 text-[#1a73e8] mx-auto" />
                       ) : (
                         <span className="text-slate-400 text-lg">−</span>
                       )
                     ) : (
-                      <span className="text-slate-700">{feature.free}</span>
+                      <span className="text-[#2b2b2b]">{feature.free}</span>
                     )}
                   </td>
 
@@ -88,12 +88,12 @@ export default function ComparisonTableSection() {
                   <td className="px-6 py-5 text-center">
                     {typeof feature.premium === "boolean" ? (
                       feature.premium ? (
-                        <Check className="h-5 w-5 text-amber-700 mx-auto" />
+                        <Check className="h-5 w-5 text-[#1a73e8] mx-auto" />
                       ) : (
                         <span className="text-slate-400 text-lg">−</span>
                       )
                     ) : (
-                      <span className="text-amber-700 font-semibold">
+                      <span className="text-[#1a73e8] font-semibold">
                         {feature.premium}
                       </span>
                     )}

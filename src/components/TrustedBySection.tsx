@@ -28,14 +28,14 @@ export default function TrustedBySection() {
   ];
 
   return (
-    <section className="bg-slate-50 px-4 py-16 font-sans sm:px-6 sm:py-24 lg:px-8">
+    <section className="bg-[#f7f5f2] px-4 py-16 font-sans sm:px-6 sm:py-24 lg:px-8">
       <div className="mx-auto w-full max-w-6xl">
         {/* Header */}
         <div className="text-center mb-12">
-          <p className="text-sm font-bold text-teal-600 tracking-widest uppercase mb-3">
+          <p className="text-sm font-bold text-[#a38200] tracking-widest uppercase mb-3">
             Trusted by the best
           </p>
-          <h2 className="text-4xl font-bold text-slate-900 sm:text-5xl">
+          <h2 className="text-4xl font-bold text-[#1a1a1a] sm:text-5xl">
             Join 50,000+ high-performers transforming knowledge into action.
           </h2>
         </div>
@@ -59,14 +59,14 @@ export default function TrustedBySection() {
 
                 {/* Quote and Attribution */}
                 <div className="flex-1">
-                  <p className="text-slate-700 italic leading-relaxed mb-3">
+                  <p className="text-[#2b2b2b] italic leading-relaxed mb-3">
                     "{testimonial.quote}"
                   </p>
                   <div>
-                    <p className="font-semibold text-slate-900">
+                    <p className="font-semibold text-[#1a1a1a]">
                       {testimonial.name}
                     </p>
-                    <p className="text-sm text-slate-500">
+                    <p className="text-sm text-[#5a5a5a]">
                       {testimonial.title}
                     </p>
                   </div>
